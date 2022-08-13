@@ -1,7 +1,14 @@
-import '../styles/globals.css'
+import "./styles.sass";
+import React from "react";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <React.Fragment>
+        <Component {...pageProps} />
+    </React.Fragment>
+  );
 }
 
-export default MyApp
+export default MyApp;
+
+

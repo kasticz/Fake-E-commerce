@@ -1,0 +1,128 @@
+@import '../../pages/_variables'
+.discountsWrapper
+    margin: 0 auto   
+    margin-top: 11rem 
+    width: 80%
+    padding: 3rem
+    box-shadow: 10px 5px 10px 5px #b6adb2
+    @include card
+    background: $mainColor
+    position: relative
+    @include flexCenter 
+    justify-content: flex-start 
+    overflow: hidden 
+
+.discountsSlider
+    max-width: 5000px
+    @include flexCenter    
+    justify-content: start  
+    transition: 1s all
+.discountItem
+    width: 1100px
+    @include flexCenter    
+    justify-content: space-between
+    &:nth-child(n+2)
+        margin-left: 7rem        
+        
+.hotDiscounts
+    margin: 0
+    color: $secondaryColor
+    font-size: 2rem
+    position: absolute
+    text-align: center
+    top: 0.5rem
+    left: 50%
+    transform: translateX(-50%)
+    font-weight: 700
+
+.discountMsg
+    font-size: 1.5rem
+    text-align: center
+    width: 33%
+
+.prices
+    @include flexCenter
+    flex-direction: column
+    width: 33%
+.oldPrice
+    margin: 0
+    font-size: 1.5rem
+    text-decoration: line-through
+    font-weight: 300
+    font-style: italic
+.newPrice
+    margin: 0
+    color: $secondaryColor
+    font-weight: 700
+    font-size: 2.3rem
+    margin-top: 1rem
+.percentDiscount
+    margin: 0
+    margin-top: 1rem
+    color: $secondaryColor
+    font-size: 2rem
+    font-weight: 700
+.discountsWrapper img
+    width: 33%
+    height: 70%
+    border-radius: 50%
+    cursor: pointer
+    
+.slideLeft,.slideRight
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 50px
+    height: 50px
+    border: none
+    border-radius: 50%
+    background-color: #fff
+    @include flexCenter
+    opacity: 0
+    transition: 0.5s all
+    
+.slideLeft img, .slideRight img  
+    width: 60%
+    height: 60%
+
+.discountsWrapper
+    &:hover
+        .slideLeft,.slideRight
+            opacity: 1
+
+.slideLeft 
+    right: 1rem
+.slideRight
+    left: 1rem
+.slideLeft,.slideRight
+    &:hover,&:active
+        background-color: #968c8c
+.slideLeft,.slideRight
+    &:focus
+        outline: 1px solid black
+
+.linksButtons
+    width: 35%
+    position: absolute
+    bottom: 2rem
+    left: 50%
+    transform: translateX(-50%)
+    @include flexCenter
+    justify-content: space-between
+
+.toCart,.toProductPage
+    height: 60px
+    max-width: 250px
+    padding: 0.5rem
+    color: $secondaryColor
+    font-size: 1rem
+    background-color: #fff
+    @include card
+    border: 1px solid $secondaryColor
+
+
+.toCart,.toProductPage
+    &:hover,&:active
+        background-color: $secondaryColor
+        color: white
+        border: none
