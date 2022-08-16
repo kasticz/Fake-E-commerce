@@ -10,11 +10,8 @@ export default function Home(props) {
   
   
 
-  console.log(props.images)
   return (
     <Fragment>
-      <Nav />
-      <SearchPanel />
       <main className="main">
         <div className="container">
           <Discounts />

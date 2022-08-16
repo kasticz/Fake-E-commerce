@@ -1,0 +1,43 @@
+@import '../../pages/_variables'
+.priceFilter
+    overflow: hidden
+    height: 60px
+    transition: 0.4s ease-out  
+.priceFilterExpanded
+    height: 260px
+
+.priceButton
+    width: 100%
+    height: 60px
+    font-size: 1.5rem
+    background-color: #fff
+    padding-left: 3rem
+
+.priceButton
+    position: relative
+    @include flexCenter        
+    &:hover,&:active
+        background-color: $fifthColor
+    &::before
+        content:''
+        @include absoluteYcenter 
+        left: 10px
+        height: 30px
+        width: 40px
+        background: url('../../assets/images/UI/FilterArrowDown.svg') center center/cover no-repeat
+        opacity: 1
+    &::after        
+        content:''
+        @include absoluteYcenter    
+        height: 30px
+        width: 40px
+        left: 10px
+        background: url('../../assets/images/UI/FilterArrowUp.svg') center center/cover no-repeat
+        opacity: 0
+.expanded
+    &::after
+        opacity: 1
+    &::before
+        opacity: 0
+
+

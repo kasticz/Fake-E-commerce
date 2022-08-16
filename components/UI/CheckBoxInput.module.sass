@@ -1,0 +1,44 @@
+@import '../../pages/_variables'
+.input
+    width: 100%
+    position: relative
+    font-size: 1.5rem   
+    padding: 5px 2rem 
+    cursor: pointer
+    z-index: 50
+    margin: 0.5rem 0
+    text-align: center
+    span
+        @include absoluteYcenter
+        width: 30px
+        height: 30px
+        @include card
+        border: 1px solid $mainColor
+        transition: 1s opacity
+        left: 1rem
+        &::after
+            content: ''
+            background: url("../../assets/images/UI/checkmark.png") center center/cover no-repeat 
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            opacity: 0
+            transition: 0.3s all ease-out
+    input
+        opacity: 0
+        position: absolute
+        width: 0.1px
+        height: 0.1px
+        top: 0
+        right: 0
+        cursor: pointer        
+        &:checked + span::after
+            opacity: 1          
+    label
+        width: 100%
+        margin-left: 1.5rem
+        color: black
+    &:hover
+        background-color: $fifthColor

@@ -2,6 +2,7 @@ $mainColor: rgb(219, 214, 217)
 $secondaryColor: #ec2f21
 $thirdColor: #47f138
 $fourthColor: #424291
+$fifthColor: #fff7da
 
 
 @mixin card
@@ -11,3 +12,8 @@ $fourthColor: #424291
     display: flex
     justify-content: center
     align-items: center
+@mixin absoluteYcenter
+    position: absolute
+    top: 50%
+    left: 0
+    transform: translateY(-50%)

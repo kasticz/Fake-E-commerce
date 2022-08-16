@@ -1,0 +1,23 @@
+@import '../../pages/_variables'
+
+.sortPanel
+    width: 100%
+    @include flexCenter
+    justify-content: flex-start
+    font-size: 1.5rem
+    padding: 1rem 2rem
+    background-color: #fff
+    border-bottom: 1px solid $mainColor
+    margin-bottom: 1rem
+    box-shadow: 0 5px 5px $mainColor
+    border-radius: 36px
+.sortingCriterias
+    @include flexCenter
+    
+.sortingCriteria
+    margin-left: 2rem
+    font-size: 1.5rem
+    color: $fourthColor
+    @include card    
+    &:hover,&:active
+        background-color: $mainColor
