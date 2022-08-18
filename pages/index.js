@@ -6,19 +6,15 @@ import Categories from "../components/categories/Categories";
 import getImages from "../store/getImages";
 
 
-export default function Home(props) {
-  
-  
 
+export default function Home(props) {
   return (
-    <Fragment>
       <main className="main">
         <div className="container">
           <Discounts />
           <Categories />
         </div>
       </main>
-    </Fragment>
   );
 }
 

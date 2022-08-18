@@ -4,7 +4,7 @@ import greyStar from '../../assets/images/UI/RatingGrey.svg'
 import halfStar from '../../assets/images/UI/RatingHalf.svg'
 import styles from './ProductRating.module.sass'
 export default function ProductRating(props) {
-  const rating = 4.6;  
+  const rating = props.rating;  
   const stars = [1,2,3,4,5]
   return (
     <React.Fragment>

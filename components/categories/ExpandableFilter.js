@@ -7,7 +7,7 @@ export default function ExpandableFilter(props) {
     setPriceExpanded(!priceExpanded);
   }
   return (
-    <div style={{height:priceExpanded ? `${props.inputs * 60 + 20}px` : `60px`}} className={styles.priceFilter}>
+    <div style={{height:priceExpanded ? `${60 + props.inputs * 47}px` : `60px`}} className={styles.priceFilter}>
       <button
         onClick={priceExpand}
         className={`${styles.priceButton} ${priceExpanded ? styles.expanded : ``}`}
@@ -19,4 +19,3 @@ export default function ExpandableFilter(props) {
   );
 }
 
-// 

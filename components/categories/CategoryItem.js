@@ -1,24 +1,31 @@
 import styles from "./CategoryItem.module.sass";
-import img from '../../assets/images/qwe.webp'
+import img from "../../assets/images/qwe.webp";
 import ProductRating from "../UI/ProductRating";
-import Link from 'next/link'
+import Link from "next/link";
 export default function CategoryItem(props) {
   return (
     <div className={styles.item}>
       <img className={styles.itemImage} src={img.src} alt="" />
-      <div className={styles.itemDescription}>
-        <Link href={'/'}>
-        <a className={styles.itemTitle}>
-          Мышь проводная ExeGate SH-9025 черный [EX264096RUS]
+      <Link href={"/"}>
+        <a className={styles.itemDescription}>
+          <span className={styles.itemTitle}>{props.item.title}</span>
+          <div className={styles.itemRating}>
+            <ProductRating rating={props.item.rating} />
+          </div>
         </a>
-        </Link>
-        <div className={styles.itemRating}>
-            <ProductRating/>
-        </div>
-      </div>
+      </Link>
       <div className={styles.itemPrice}>
-        <span>199 ₽</span>
-        <button className={styles.buyButton}>Купить</button>
+        <span>{props.item.price} ₽</span>
+        <div className={styles.buttons}>
+          <Link href='/'>
+            <a>
+              <button className={styles.pageButton}>
+                Перейти на страницу товара
+              </button>
+            </a>
+          </Link>
+          <button className={styles.buyButton}>Купить</button>
+        </div>
       </div>
     </div>
   );

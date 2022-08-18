@@ -11,7 +11,7 @@ export default function Categories(props) {
       <h2 className={styles.title}>Категории товаров</h2>
       <ul className={styles.categories}>
         <li className={styles.category}>
-          <Link href="/mouses">
+          <Link href="/mouses/1">
             <a>
               <img className={styles.categoryImg} src={mouse.src} alt="" />
             </a>

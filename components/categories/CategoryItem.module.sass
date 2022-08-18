@@ -10,23 +10,24 @@
     padding: 1rem
     border-radius: 16px
     background-color: #fff
+        
     
 .itemImage
     width: 200px
     height: 200px
-.itemTitle,.itemPrice,.buyButton
+.itemTitle,.itemPrice,.buyButton,.pageButton
     font-size: 1.5rem
 .itemRating
     margin-top: 1rem
 
 .itemDescription
     padding: 2rem 1rem
-    width: 60%
+    width: 40%
     cursor: pointer
     &:hover .itemTitle
         color: $fourthColor
 .itemPrice
-    width: 20%
+    width: 40%
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -36,16 +37,22 @@
         text-align: right
         font-size: 2rem
         font-weight: 700
-.buyButton
-    margin: 0 auto
+.buttons
+    @include flexCenter
+    width: 100%
+.buyButton, .pageButton
     width: 150px
     height: 70px
     background-color: $secondaryColor
     @include card
     color: white
+    padding: 0.5rem
     &:hover
         background-color: #e94040
     &:active
         background: radial-gradient($secondaryColor, #c74242)
 
-        
+.pageButton
+    width: 200px
+    margin-right: 1rem
+    
