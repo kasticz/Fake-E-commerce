@@ -1,0 +1,59 @@
+@import '../../../../pages/_variables'
+.analogs 
+    text-align: center
+    font-size: 1.5rem
+    font-weight: 700
+    position: relative
+.sliderWrapper
+    width: 100%
+    overflow: hidden
+    position: relative
+.analogsItems
+    @include flexCenter
+    // justify-content: flex-start
+    padding: 1rem 0
+    transition: 1s all
+
+.slideLeft,.slideRight
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 50px
+    height: 50px
+    border: none
+    border-radius: 50%
+    background-color: $mainColor
+    @include flexCenter
+    transition: 0.5s all
+
+.slideLeft img, .slideRight img  
+    width: 60%
+    height: 60%
+.slideLeft 
+    right: 1rem
+.slideRight
+    left: 1rem
+.slideLeft,.slideRight
+    &:hover,&:active
+        background-color: #968c8c
+.slideLeft,.slideRight
+    &:focus
+        outline: 1px solid black
+
+.dots
+    position: absolute
+    bottom: -1rem
+    left: 50%
+    transform: translateX(-50%)
+    @include flexCenter
+    
+.dot
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: black
+    &:nth-child(n+2)
+        margin-left: 0.5rem
+.activeDot
+    width: 15px
+    height: 15px

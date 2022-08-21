@@ -5,7 +5,7 @@ import {
 } from "../../../store/mousesSlice";
 import { useSelector, useDispatch } from "react-redux";
 import CheckBoxInput from "../../UI/CheckBoxInput";
-import ExpandableFilter from "../ExpandableFilter";
+import ExpandableFilter from "../../UI/ExpandableFilter";
 import { useRouter } from "next/router";
 import styles from "./MousesFilter.module.sass";
 

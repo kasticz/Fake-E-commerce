@@ -9,6 +9,7 @@ export default function header(props) {
   const [position, setPosition] = useState(0);
   const [idleSlide, setIdleSlide] = useState("");
   function stopIdleSlide() {
+    console.log(idleSlide)
     if (idleSlide) {
       clearTimeout(idleSlide);
     }

@@ -1,0 +1,28 @@
+@import '../../../../pages/_variables'
+.analogItem    
+    width: 100%       
+    &:nth-child(n+2)
+        // margin-left: 300px        
+    a
+        margin: 0 auto
+        @include flexCenter
+        border-radius: 32px
+        flex-direction: column        
+        height: 100%
+        width: 255px
+        height: 200px               
+        padding: 1rem
+        &:hover
+            border: 2px solid $mainColor 
+            box-shadow: 5px 5px 5px $mainColor
+.analogImg
+    height: 120px
+    width: 120px
+.analogTitle
+    font-size: 1rem
+    font-weight: 400
+.analogPrice
+    font-size: 1rem
+    font-weight: 700
+    margin-top: 0.5rem
+    text-align: center

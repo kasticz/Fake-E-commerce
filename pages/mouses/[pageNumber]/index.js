@@ -1,10 +1,8 @@
 
 
-import MousesPage from "../../components/categories/Mouses/MousesPage";
+import MousesPage from "../../../components/categories/Mouses/MousesPage";
 import {useRouter} from 'next/router'
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { mouseSortingActions } from "../../store/mousesSlice";
 
 export default function Mouses(props) {
   const dispatch = useDispatch()

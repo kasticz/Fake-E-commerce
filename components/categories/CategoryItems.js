@@ -1,5 +1,6 @@
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "next/router";
+import PagesButtons from "../UI/pagesButtons";
 import styles from "./CategoryItems.module.sass";
 
 export default function CategoryItems(props) {
@@ -22,33 +23,6 @@ export default function CategoryItems(props) {
         </li>
       );
     });
-  const pagesButtons = [];
-  for (let i = 1; i <= Math.ceil(props.items.length / 5); i++) {
-    pagesButtons.push(
-      <button
-        onClick={(e) =>
-          router.replace({
-            pathname: router.pathname,
-            query:{
-              sortOrder: router.query.sortOrder || ``,
-              sortType: router.query.sortType || ``,
-              pageNumber: i
-            }
-          })
-        }
-        className={`${
-          i == router.query.pageNumber ? styles.pageButtonActive : ``
-        } ${styles.pageButton}`}
-        key={Math.random()}
-      >
-        {i}
-      </button>
-    );
-  }
-
-  function changePage(e) {
-    console.log(e.target);
-  }
   return (
     <section className={styles.items}>
       <ul>
@@ -57,8 +31,8 @@ export default function CategoryItems(props) {
         ) : (
           <div className={styles.nothingFound}>Ничего не найдено</div>
         )}
-      </ul>
-      <div className={styles.pageButtons}>{pagesButtons}</div>
+      </ul>   
+      <PagesButtons itemsLength={props.items.length}/>  
     </section>
   );
 }

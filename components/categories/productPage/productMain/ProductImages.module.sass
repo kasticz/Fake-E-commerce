@@ -1,0 +1,31 @@
+@import '../../../../pages/_variables'
+
+.productImages
+    @include flexCenter
+    flex-direction: column
+.mainImg
+    height: 90%
+    width: 90%
+    max-height: 400px
+    max-width: 400px
+.smallImages
+    height: 120px
+    width: 100%
+    @include flexCenter
+    border: 1px solid $mainColor
+    box-shadow: 5px 5px 5px $mainColor
+    border-radius: 25px
+    margin-top: 1rem
+    padding: 1rem
+.smallImg
+    height: 100px
+    width: 100px
+    @include card
+    background-color: #fff   
+    cursor: pointer 
+    padding: 0.5rem
+    &:nth-child(n+2)
+        margin-left: 3rem
+    &:hover
+        outline: 1px solid $mainColor
+        box-shadow: 5px 5px 5px $mainColor
