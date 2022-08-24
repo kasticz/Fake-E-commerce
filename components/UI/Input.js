@@ -1,6 +1,6 @@
-import { Children, Fragment, useRef,forwardRef } from "react";
+import{ Children, Fragment, useRef,forwardRef } from "react";
 
- const Input = forwardRef((props, ref) => {
+ const Input = React.forwardRef((props, ref) => {
     return (   
         <div onClick={props.onClick} className={props.class}>
           {(props.addLabel && props.labelFirst) && <label htmlFor={props.input.id}>{props.label}</label>}
@@ -10,6 +10,8 @@ import { Children, Fragment, useRef,forwardRef } from "react";
         </div>
       );
   });
+
+  Input.displayName = "Input";
 
 
 

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import styles from "./pagesButtons.module.sass";
 
-export default function pagesButtons(props) {
+export default function PagesButtons(props) {
   const router = useRouter()
   const buttons = [];
   for (let i = 1; i <= Math.ceil(props.itemsLength / 5); i++) {

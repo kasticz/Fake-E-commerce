@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-export default function (props) {
+export default function Something (props) {
   async function sendDataTry() {
     const response = await fetch("./api/hello");
     const answer = await response.json();

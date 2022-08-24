@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./Discounts.module.sass";
 import SliderItem from "./SliderItem";
 
-export default function header(props) {
+export default function Discounts(props) {
   let idleSlide;
   const items = useMemo(() => {
     return props.products.map((item) => {

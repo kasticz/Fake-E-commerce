@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
-export default function productIds(props) {
+export default function ProductIds(props) {
   const router = useRouter();
   const products = useSelector((state) => state.mousesSorting);
   const [currProduct,setCurrProduct] = useState(false)
