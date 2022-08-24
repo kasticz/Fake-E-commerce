@@ -10,20 +10,21 @@ export default function Mouses(props) {
   const dispatch = useDispatch();
   const router = useRouter();
   const mouses = useSelector((state) => state.mousesSorting);
-  console.log("rerendered", mouses);
-  useEffect(() => {
-    if (mouses === "initial") {
-      dispatch(mouseSortingActions.setUpState(props.mouses));
-    }
-  }, [mouses]);
+  // console.log("rerendered", mouses);
+  // useEffect(() => {
+  //   if (mouses === "initial") {
+  //     dispatch(mouseSortingActions.setUpState(props.mouses));
+  //   }
+  // }, [mouses]);
 
-  const sortType = router.query.sortType || false;
-  const sortOrder = router.query.sortOrder || false;
+  // const sortType = router.query.sortType || false;
+  // const sortOrder = router.query.sortOrder || false;
+  console.log('index',props.mouses)
   return (
     <div className="container">
       <MousesPage
         itemsLength={props.itemsLength}
-        mouses={props.mouses}
+        mouses={mouses || props.mouses}
         // sortData={{ sortType, sortOrder }}
       />
     </div>
@@ -54,6 +55,7 @@ export async function getStaticProps(context) {
     `mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`
   );
   const db = client.db();
+  console.log(123)
 
   const currentProducts = await db
     .collection("mouses")

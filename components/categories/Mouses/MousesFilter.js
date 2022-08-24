@@ -28,7 +28,8 @@ export default function FilterPanel(props) {
       query: {
         pageNumber: 1,
       },
-    });    
+    });  
+    dispatch(mouseSortingActions.setUpState(props.items))  
     dispatch(filter({ inputs }));
   }
 

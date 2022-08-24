@@ -4,7 +4,6 @@ export default function Something (props) {
   async function sendDataTry() {
     const response = await fetch("./api/hello");
     const answer = await response.json();
-    // console.log(answer);
   }
 
   async function sendData() {
@@ -60,7 +59,6 @@ export default function Something (props) {
     });
 
     const answer = await response.json();
-    // console.log(answer);
   }
   return (
     <Fragment>

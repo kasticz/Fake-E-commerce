@@ -8,11 +8,12 @@ import FilterPanel from "./MousesFilter";
 export default function CategoriesTemplate(props) {
   // const mouses = useSelector((state) => state.mousesSorting);
 
-  const mouses = useSelector((state) => state.mousesSorting);
+  // const mouses = useSelector((state) => state.mousesSorting);
+  // console.log('page',props.mouses)
 
   return (
     <main className={styles.productsPage}>
-      <FilterPanel />
+      <FilterPanel items={props.mouses} />
       <div className={styles.productsMain}>
         <SortPanel />
         <CategoryItems

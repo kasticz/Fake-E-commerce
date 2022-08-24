@@ -5,6 +5,7 @@ import styles from "./CategoryItems.module.sass";
 
 export default function CategoryItems(props) {
   const router = useRouter();
+  // console.log('items',props.items)
 
 
   const sortedItems = router.query.sortType && router.query.sortOrder ? props.items.sort((a, b) => {
