@@ -840,8 +840,8 @@ const mouses = [
 ];
 const mousesSlice = createSlice({
   name: "mouses",
-  // initialState: mouses,
-  initialState: 'initial',
+  initialState: mouses,
+  // initialState: 'initial',
   reducers: {
     dropAllFilters,
     makeAllUnViewable,
