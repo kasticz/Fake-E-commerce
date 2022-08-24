@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import styles from "./pagesButtons.module.sass";
+import styles from "./PagesButtons.module.sass";
 
 export default function PagesButtons(props) {
   const router = useRouter()
