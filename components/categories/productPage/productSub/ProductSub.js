@@ -1,5 +1,5 @@
 import CharCategory from "./CharCategory";
-import ProductOverview from "./productOverview";
+import ProductOverview from "./ProductOverview";
 import styles from "./ProductSub.module.sass";
 
 export default function ProductSub(props) {

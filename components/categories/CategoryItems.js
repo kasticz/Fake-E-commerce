@@ -1,6 +1,6 @@
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "next/router";
-import PagesButtons from "../UI/pagesButtons";
+import PagesButtons from "../UI/PagesButtons";
 import styles from "./CategoryItems.module.sass";
 
 export default function CategoryItems(props) {
