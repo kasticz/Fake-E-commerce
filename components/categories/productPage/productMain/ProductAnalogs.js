@@ -8,13 +8,14 @@ import styles from "./ProductAnalogs.module.sass";
 export default function ProductAnalogs(props) {
   const mouses = useSelector((state) => state.mousesSorting);
   const [position, setPosition] = useState(0);
-  const analogs = mouses
-    .map((item) =>
-      props.analogsIds.includes(item.id) ? (
-        <ProductAnalog image={item.images[0]} key={Math.random()} />
-      ) : null
-    )
-    .filter((item) => !!item);
+  // const analogs = mouses
+  //   .map((item) =>
+  //     props.analogsIds.includes(item.id) ? (
+  //       <ProductAnalog image={item.images[0]} key={Math.random()} />
+  //     ) : null
+  //   )
+  //   .filter((item) => !!item);
+  const analogs = [1].map((item)=>  <ProductAnalog key={Math.random()}/>)
 
   const dots = [];
   for (let i = 0; i < analogs.length; i++) {

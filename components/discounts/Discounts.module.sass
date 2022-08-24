@@ -13,17 +13,10 @@
     overflow: hidden 
 
 .discountsSlider
-    max-width: 5000px
+    max-width: 6000px
     @include flexCenter    
     justify-content: flex-start  
     transition: 1s all
-.discountItem
-    width: 1100px
-    @include flexCenter    
-    justify-content: space-between
-    &:nth-child(n+2)
-        margin-left: 7rem        
-        
 .hotDiscounts
     margin: 0
     color: $secondaryColor
@@ -34,6 +27,12 @@
     left: 50%
     transform: translateX(-50%)
     font-weight: 700
+.discountItem
+    width: 1100px
+    @include flexCenter    
+    justify-content: space-between
+    &:nth-child(n+2)
+        margin-left: 7rem               
 
 .discountMsg
     font-size: 1.5rem
@@ -63,8 +62,8 @@
     font-size: 2rem
     font-weight: 700
 .discountsWrapper img
-    width: 33%
-    height: 70%
+    width: 363px
+    height: 363px
     border-radius: 50%
     cursor: pointer
     
@@ -101,28 +100,3 @@
     &:focus
         outline: 1px solid black
 
-.linksButtons
-    width: 35%
-    position: absolute
-    bottom: 2rem
-    left: 50%
-    transform: translateX(-50%)
-    @include flexCenter
-    justify-content: space-between
-
-.toCart,.toProductPage
-    height: 60px
-    max-width: 250px
-    padding: 0.5rem
-    color: $secondaryColor
-    font-size: 1rem
-    background-color: #fff
-    @include card
-    border: 1px solid $secondaryColor
-
-
-.toCart,.toProductPage
-    &:hover,&:active
-        background-color: $secondaryColor
-        color: white
-        border: none

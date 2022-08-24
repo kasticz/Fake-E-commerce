@@ -1,56 +1,54 @@
 import { Fragment } from "react";
 
 export default function (props) {
-
-    async function sendDataTry(){
-        const response = await fetch('./api/hello')
-        const answer = await response.json();
-        console.log(answer);
-    }
+  async function sendDataTry() {
+    const response = await fetch("./api/hello");
+    const answer = await response.json();
+    // console.log(answer);
+  }
 
   async function sendData() {
     const data = {
-      title: "SteelSeries Rival 3",
-      price: 3199,
-      rating: 4.6,
-      manufacturer: "SteelSeries",
-      dpi: "8500",
+      title: "A4Tech Bloody AL9/AL90 Blazing",
+      price: 2799,
+      rating: 4.3,
+      manufacturer: "A4Tech",
+      dpi: "8200",
       wireless: false,
       viewable: true,
-      discount: 25,
-      id: 1,
+      discount: null,
+      id: 20,
       eligibleIds: [
         `<5000price`,
-        `SteelSeriesMouses`,
+        `A4TechMouses`,
         `wiredMouse`,
-        `5001-1000dpi`,
+        `5001-10000dpi`,
         ">4rating",
       ],
       images: [
-        "/mouses/exampleMouse.webp",
-        "/mouses/exampleMouse2.webp",
-        "/mouses/exampleMouse3.webp",
+        "/mouses/A4TechBloodyAL9AL90Blazing.webp",
+        "/mouses/A4TechBloodyAL9AL90Blazing2.webp",
+        "/mouses/A4TechBloodyAL9AL90Blazing3.webp",
       ],
       mainChars: [
-        ["Модель", "SteelSeries Rival 3"],
-        ["Производитель", "SteelSeries"],
+        ["Модель", "A4Tech Bloody AL9/AL90 Blazing"],
+        ["Производитель", "A4Tech"],
         ["Страна", "Китай"],
-        ["Гарантия", "24 мес."],
+        ["Гарантия", "12 мес."],
       ],
       specificChars: [
-        ["Максимальное разрешение датчика", "8500"],
-        ["Тип Подключения", "проводная"],
-        ["Тип сенсора мыши", "оптический светодиодный"],
+        ["Максимальное разрешение датчика", "8200 "],
+        ["Тип подключения", "проводная"],
+        ["Тип сенсора мыши", "оптический лазерный"],
       ],
       sizes: [
         ["Ширина", "67 мм"],
-        ["Высота", "37.9 мм"],
-        ["Длина", "120.6 мм"],
-        ["Вес", "77 г"],
+        ["Высота", "42.5 мм"],
+        ["Длина", "124 мм"],
+        ["Вес", "146 г"],
       ],
-      analogs: [1],
       overview:
-        "Мышь проводная SteelSeries Rival 3 - оптимальный вариант для прохождения игр любой жанровой направленности. Отличительной особенностью этой модели стала высокая разрешающая способность оптического датчика, максимальный показатель которой может достигать 8500 dpi. Даже играя за широкоформатным экраном монитора, вы получите высокую точность движений. Модель оформлена в черном цвете корпуса. Ее дизайн гармонично дополняет эффектная разноцветная подсветка логотипа. Устройство располагает шестью кнопками с возможностью их программирования под различные задачи. Проводная мышь SteelSeries Rival 3 предназначена для использования правой рукой. Облаченная в корпус из матового пластика модель приятна на ощупь, также на ней малозаметны отпечатки пальцев. Устройство подключается к компьютеру или ноутбуку при помощи кабеля с длиной 1.8 м и интерфейсом USB на конце. О долговечности манипулятора свидетельствует внушительный ресурс кнопок, достигающий 60 млн нажатий. Весящая 77 г мышь обладает размерами 67x37.9x120.6 мм.",
+        "Мышь проводная A4Tech Bloody AL9 Blazing имеет Bloody-стилизацию в красных и черных тонах с синей LED-подсветкой. Эргономичная форма поможет геймерам сохранить точность кликов, не отяжеляя кисть правой руки. Заявленная износостойкость пластиковых кнопок равна двадцати миллионам кликов. Технология 16-ступенчатой калибровки, 8200-точечное разрешение и металлические ножки Armor Boot-X'Glide Pro Metal Mouse Feet гарантируют высокую точность и чувствительность мыши, независимо от использующейся поверхности.При восьми кнопках, имеющихся на рабочем корпусе A4Tech Bloody AL9 Blazing, встроенная в нее память в 160 Кб позволяет создавать целые пользовательские интерфейсы, сохраняя до 4000 комбинаций или отдельных команд.",
     };
 
     const response = await fetch("./api/hello", {
@@ -62,7 +60,7 @@ export default function (props) {
     });
 
     const answer = await response.json();
-    console.log(answer);
+    // console.log(answer);
   }
   return (
     <Fragment>

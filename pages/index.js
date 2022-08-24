@@ -1,9 +1,8 @@
 import Discounts from "../components/discounts/Discounts";
-import Nav from "../components/UI/Nav";
-import { Fragment, useEffect, useState } from "react";
-import SearchPanel from "../components/UI/SearchPanel";
+import {MongoClient} from 'mongodb'
 import Categories from "../components/categories/Categories";
-import getImages from "../store/getImages";
+import { pass } from "./api/hello";
+
 
 
 
@@ -11,7 +10,7 @@ export default function Home(props) {
   return (
       <main className="main">
         <div className="container">
-          <Discounts />
+          <Discounts products={props.products} />
           <Categories />
         </div>
       </main>
@@ -19,3 +18,17 @@ export default function Home(props) {
 }
 
 
+export async function getStaticProps(context){
+  const client = await MongoClient.connect(`mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`)
+  const db = client.db()
+
+  const mouses = db.collection('mouses')
+
+  const bestDiscounts = await db.collection('mouses').find({discount:{$gte:15}}, {projection: {price:1,discount:1,images:1,title:1,_id:0,id:1}}).toArray()
+  client.close()
+  return {
+    props:{
+      products: bestDiscounts
+    }
+  }
+}

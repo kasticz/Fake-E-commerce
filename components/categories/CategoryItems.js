@@ -5,13 +5,16 @@ import styles from "./CategoryItems.module.sass";
 
 export default function CategoryItems(props) {
   const router = useRouter();
-  const items = props.items
-    .sort((a, b) => {
-      return props.sortData.sortOrder === "asc"
-        ? a[props.sortData.sortType] - b[props.sortData.sortType]
-        : b[props.sortData.sortType] - a[props.sortData.sortType];
-    })
-    .map((item, index) => {
+
+
+  const sortedItems = router.query.sortType && router.query.sortOrder ? props.items.sort((a, b) => {
+    return router.query.sortOrder === "asc"
+      ? a[router.query.sortType] - b[router.query.sortType]
+      : b[router.query.sortType] - a[router.query.sortType];
+  }) :
+  props.items
+
+  const finalItems = sortedItems.map((item, index) => {
       if (
         index > router.query.pageNumber * 5 - 1 ||
         index < router.query.pageNumber * 5 - 5
@@ -26,13 +29,13 @@ export default function CategoryItems(props) {
   return (
     <section className={styles.items}>
       <ul>
-        {items.filter((item) => !!item).length > 0 ? (
-          items
+        {finalItems.filter((item) => !!item).length > 0 ? (
+          finalItems
         ) : (
           <div className={styles.nothingFound}>Ничего не найдено</div>
         )}
-      </ul>   
-      <PagesButtons itemsLength={props.items.length}/>  
+      </ul>
+      <PagesButtons itemsLength={props.itemsLength} />
     </section>
   );
 }

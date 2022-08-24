@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import FilterPanel from "./MousesFilter";
 
 export default function CategoriesTemplate(props) {
+  // const mouses = useSelector((state) => state.mousesSorting);
+
   const mouses = useSelector((state) => state.mousesSorting);
 
   return (
@@ -14,11 +16,8 @@ export default function CategoriesTemplate(props) {
       <div className={styles.productsMain}>
         <SortPanel />
         <CategoryItems
-          sortData={{
-            sortOrder: props.sortData.sortOrder,
-            sortType: props.sortData.sortType
-          }}
-          items={mouses.filter((item) => item.viewable)}
+          itemsLength={props.itemsLength}
+          items={props.mouses.filter((item) => item.viewable)}
         />
       </div>
     </main>

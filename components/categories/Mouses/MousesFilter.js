@@ -10,23 +10,25 @@ import { useRouter } from "next/router";
 import styles from "./MousesFilter.module.sass";
 
 export default function FilterPanel(props) {
-  const router = useRouter()
+  const router = useRouter();
   const inputs = useSelector((state) => state.mousesInputs);
   const dispatch = useDispatch();
   function dropFilter() {
     router.replace({
       pathname: router.pathname,
-      query:{pageNumber:1}
-    })
+      query: { pageNumber: 1 },
+    });
     dispatch(mouseSortingActions.reset());
     dispatch(mouseInputsActions.resetInputs());
   }
   function changeProducts(e) {
+    e.preventDefault();
     router.replace({
       pathname: router.pathname,
-      query:{pageNumber:1, sortType: router.query.sortType || ``, sortOrder: router.query.sortOrder || ``}
-    })
-    e.preventDefault();
+      query: {
+        pageNumber: 1,
+      },
+    });    
     dispatch(filter({ inputs }));
   }
 
@@ -46,25 +48,25 @@ export default function FilterPanel(props) {
             input={{ id: "<5000price" }}
           />
           <CheckBoxInput
-            label="5 001-15 000"
+            label="5 001-10 000"
             price={true}
             sortType="price"
-            input={{ id: "5001-15000price" }}
+            input={{ id: "5001-10000price" }}
           />
           <CheckBoxInput
-            label="15 001 - 30 000"
+            label="10 001 - 15 000"
             price={true}
             sortType="price"
-            input={{ id: "15001-30000price" }}
+            input={{ id: "10001-15000price" }}
           />
           <CheckBoxInput
-            label="Более 30 000"
+            label="Более 15 000"
             price={true}
             sortType="price"
-            input={{ id: ">30000price" }}
+            input={{ id: ">15000price" }}
           />
         </ExpandableFilter>
-        <ExpandableFilter inputs={5} filter="Производитель">
+        <ExpandableFilter inputs={6} filter="Производитель">
           <CheckBoxInput
             label="SteelSeries"
             sortType="manufacturer"
@@ -86,9 +88,14 @@ export default function FilterPanel(props) {
             input={{ id: "RazerMouses" }}
           />
           <CheckBoxInput
-            label="OKlick"
+            label="ASUS"
             sortType="manufacturer"
-            input={{ id: "OKlickMouses" }}
+            input={{ id: "AsusMouses" }}
+          />
+          <CheckBoxInput
+            label="A4Tech"
+            sortType="manufacturer"
+            input={{ id: "A4TechMouses" }}
           />
         </ExpandableFilter>
         <ExpandableFilter
@@ -121,7 +128,7 @@ export default function FilterPanel(props) {
             input={{ id: ">20000dpi" }}
           />
         </ExpandableFilter>
-        <ExpandableFilter inputs={2} filter="Тип Подключения">
+        <ExpandableFilter inputs={3} filter="Тип Подключения">
           <CheckBoxInput
             label="Проводная"
             sortType="wireless"
@@ -131,6 +138,11 @@ export default function FilterPanel(props) {
             label="Беспроводная"
             sortType="wireless"
             input={{ id: "wirelessMouse" }}
+          />
+          <CheckBoxInput
+            label="Беспроводная/проводная"
+            sortType="wireless"
+            input={{ id: "wirelesswiredMouse" }}
           />
         </ExpandableFilter>
         <button className={styles.applyFilter}>Применить фильтр</button>

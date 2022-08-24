@@ -11,8 +11,8 @@ export default function pagesButtons(props) {
           router.push({
             pathname: router.pathname,
             query: {
-              sortOrder: router.query.sortOrder || ``,
-              sortType: router.query.sortType || ``,
+              sortOrder: router.query.sortOrder || false,
+              sortType: router.query.sortType || false,
               pageNumber: i,
             },
           })

@@ -1,0 +1,67 @@
+@import '../../pages/_variables'
+
+.discountItem
+    width: 1100px
+    @include flexCenter    
+    justify-content: space-between
+    position: relative
+    &:nth-child(n+2)
+        margin-left: 7rem               
+
+.discountMsg
+    font-size: 1.5rem
+    text-align: center
+    width: 33%
+.product
+    font-weight: 700
+
+.prices
+    @include flexCenter
+    flex-direction: column
+    width: 33%
+.oldPrice
+    margin: 0
+    font-size: 1.5rem
+    text-decoration: line-through
+    font-weight: 300
+    font-style: italic
+.newPrice
+    margin: 0
+    font-weight: 700
+    font-size: 2.3rem
+    margin-top: 1rem
+    letter-spacing: 3px
+.percentDiscount
+    margin: 0
+    margin-top: 1rem
+    color: $secondaryColor
+    font-size: 2rem
+    font-weight: 700
+    letter-spacing: 5px
+
+.linksButtons
+    width: 40%
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    @include flexCenter
+    justify-content: space-between
+
+.toCart,.toProductPage
+    height: 60px
+    max-width: 250px
+    padding: 0.5rem
+    color: $secondaryColor
+    font-size: 1rem
+    background-color: #fff
+    @include card
+    border: 1px solid $secondaryColor
+    &:hover,&:active
+        background-color: $secondaryColor
+        color: white
+        border: none
+
+
+
+

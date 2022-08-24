@@ -9,6 +9,8 @@ export default function productIds(props) {
   const router = useRouter();
   const products = useSelector((state) => state.mousesSorting);
   const [currProduct,setCurrProduct] = useState(false)
+
+
   useEffect(() => {
     if(router.isReady){
       setCurrProduct(products.find((item) => item.id == router.query.productId))      
