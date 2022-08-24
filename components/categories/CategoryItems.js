@@ -5,7 +5,7 @@ import styles from "./CategoryItems.module.sass";
 
 export default function CategoryItems(props) {
   const router = useRouter();
-  // console.log('items',props.items)
+
 
 
   const sortedItems = router.query.sortType && router.query.sortOrder ? props.items.sort((a, b) => {
@@ -36,7 +36,7 @@ export default function CategoryItems(props) {
           <div className={styles.nothingFound}>Ничего не найдено</div>
         )}
       </ul>
-      <PagesButtons itemsLength={props.itemsLength} />
+      <PagesButtons itemsLength={props.items.length} />
     </section>
   );
 }
