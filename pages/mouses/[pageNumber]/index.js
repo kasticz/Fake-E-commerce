@@ -11,18 +11,19 @@ export default function Mouses(props) {
   const router = useRouter();
   const mouses = useSelector((state) => state.mousesSorting);
 
+  console.log(mouses)
+
   useEffect(() => {
     if (!mouses) {
       dispatch(mouseSortingActions.setUpState(props.mouses));
     }
-  }, []);
+    dispatch(mouseSortingActions.applyDiscounts())
+  }, [router]);
 
   return (
     <div className="container">
       <MousesPage
-        itemsLength={props.itemsLength}
         mouses={mouses || props.mouses}
-        // sortData={{ sortType, sortOrder }}
       />
     </div>
   );

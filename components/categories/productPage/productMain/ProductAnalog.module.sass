@@ -1,8 +1,6 @@
 @import '../../../../pages/_variables'
 .analogItem    
-    width: 100%       
-    &:nth-child(n+2)
-        // margin-left: 300px        
+    width: 100%          
     a
         margin: 0 auto
         @include flexCenter
@@ -12,7 +10,7 @@
         width: 255px
         height: 200px               
         padding: 1rem
-        &:hover
+        &:hover,&:focus
             border: 2px solid $mainColor 
             box-shadow: 5px 5px 5px $mainColor
 .analogImg

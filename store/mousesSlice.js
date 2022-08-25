@@ -847,15 +847,14 @@ const mousesSlice = createSlice({
     makeAllUnViewable,
     sortByInputs,
     reset,
-    setUpState
+    setUpState,
+    applyDiscounts
   },
 });
 
 export function filter(payload) {
-  const mouses = payload.mouses;
   const inputs = payload.inputs;
   return (dispatch) => {
-    dispatch(mousesSlice.actions.dropAllFilters());
     dispatch(mousesSlice.actions.makeAllUnViewable());
     dispatch(mousesSlice.actions.sortByInputs(inputs));
   };
@@ -868,6 +867,12 @@ function reset(state) {
 function setUpState(state,payload){
   state = payload.payload
   return state
+}
+
+function applyDiscounts(state,payload){
+  for(let mouse of state){
+    mouse.newPrice = mouse.discount ? Math.round((mouse.price * ((100 - mouse.discount) / 100)))  : mouse.price
+  }
 }
 
 const mouseInputs = {
@@ -919,8 +924,9 @@ export const mouseInputsSlice = createSlice({
 });
 
 function dropAllFilters(state) {
-  state = mouses;
-  return state;
+  for(let mouse of state){
+    mouse.viewable = true;
+  }
 }
 function makeAllUnViewable(state) {
   for (let mouse of state) {

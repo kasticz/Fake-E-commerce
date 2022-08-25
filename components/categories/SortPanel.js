@@ -7,13 +7,13 @@ export default function SortPanel(props) {
   function priceDesc() {
     router.replace({
       pathname: `${router.pathname}`,
-      query: { sortType: "price", sortOrder: "desc", pageNumber: 1 },
+      query: { sortType: "newPrice", sortOrder: "desc", pageNumber: 1 },
     });
   }
   function priceAsc() {
     router.replace({
       pathname: `${router.pathname}`,
-      query: { sortType: "price", sortOrder: "asc", pageNumber: 1 },
+      query: { sortType: "newPrice", sortOrder: "asc", pageNumber: 1 },
     });
   }
   function ratingDesc() {

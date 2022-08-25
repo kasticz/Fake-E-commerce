@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import arrowRight from "../../../../assets/images/UI/arrowLeft.svg";
 import arrowLeft from "../../../../assets/images/UI/arrowRight.svg";
@@ -6,16 +7,12 @@ import ProductAnalog from "./ProductAnalog";
 import styles from "./ProductAnalogs.module.sass";
 
 export default function ProductAnalogs(props) {
-  const mouses = useSelector((state) => state.mousesSorting);
   const [position, setPosition] = useState(0);
-  // const analogs = mouses
-  //   .map((item) =>
-  //     props.analogsIds.includes(item.id) ? (
-  //       <ProductAnalog image={item.images[0]} key={Math.random()} />
-  //     ) : null
-  //   )
-  //   .filter((item) => !!item);
-  const analogs = [1].map((item)=>  <ProductAnalog key={Math.random()}/>)
+  const analogs = useMemo(() => {
+    return props.analogs.map((item) => (
+      <ProductAnalog item={item} key={Math.random()} />
+    ));
+  },[props.analogs]);
 
   const dots = [];
   for (let i = 0; i < analogs.length; i++) {
@@ -40,6 +37,8 @@ export default function ProductAnalogs(props) {
 
   return (
     <div className={styles.analogs}>
+{      props.analogs.length === 0 ? <p className={styles.nothingFound}>Аналогов не найдено :(</p> :
+      <Fragment>
       <h3 className={styles.analogsTitle}>Аналоги</h3>
       <div className={styles.sliderWrapper}>
         <ul
@@ -59,6 +58,7 @@ export default function ProductAnalogs(props) {
         </button>
       </div>
       <div className={styles.dots}>{dots}</div>
+      </Fragment>}
     </div>
   );
 }

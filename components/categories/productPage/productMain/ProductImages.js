@@ -1,8 +1,21 @@
 import { Fragment,useState, useEffect } from "react";
+import getImages from "../../../../store/getImages";
+import img from '../../../../assets/images/mouses/SteelSeriesRival3.webp'
 import styles from './ProductImages.module.sass'
+import { useRouter } from "next/router";
 
 export default function ProductImages(props) {
+  const router = useRouter()
     const [mainImgSrc, setMainImgSrc] = useState();
+    const [images,setImages] = useState()
+    useEffect(()=>{
+      async function getImgs(){
+        const imgs = await getImages(props.images)
+        setImages(imgs)
+        setMainImgSrc(imgs[0]);
+      }
+      getImgs()
+    },[props.images])
     function smth(e) {
       setMainImgSrc(e.target.src);
     }
@@ -10,11 +23,11 @@ export default function ProductImages(props) {
   return (
     <Fragment>
       <div className={styles.productImages}>
-      <img className={styles.mainImg} src={mainImgSrc || props.images[0]} alt="" />
+      <img className={styles.mainImg} src={mainImgSrc ? mainImgSrc : img.src} alt="" />
       <div className={styles.smallImages}>
-        <img onClick={smth} className={styles.smallImg} src={props.images[0]} alt="" />
-        <img onClick={smth} className={styles.smallImg} src={props.images[1]} alt="" />
-        <img onClick={smth} className={styles.smallImg} src={props.images[2]} alt="" />
+        <img onClick={smth} className={styles.smallImg} src={ images ? images[0] : img.src} alt="" />
+        <img onClick={smth} className={styles.smallImg} src={images ? images[1] : img.src} alt="" />
+        <img onClick={smth} className={styles.smallImg} src={images ? images[2] : img.src} alt="" />
       </div>
       </div>
     </Fragment>

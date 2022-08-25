@@ -22,7 +22,6 @@ export async function getStaticProps(context){
   const client = await MongoClient.connect(`mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`)
   const db = client.db()
 
-  const mouses = db.collection('mouses')
 
   const bestDiscounts = await db.collection('mouses').find({discount:{$gte:15}}, {projection: {price:1,discount:1,images:1,title:1,_id:0,id:1}}).toArray()
   client.close()

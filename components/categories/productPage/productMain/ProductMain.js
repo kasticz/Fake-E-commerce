@@ -35,7 +35,7 @@ export default function ProductMain(props) {
     <section className={styles.productMain}>
       <h2 className={styles.productMainTitle}>{product.title}</h2>
       <div className={styles.productWindow}>
-        <ProductImages images={images} />
+        <ProductImages images={product.images} />
         <div className={styles.productUI}>
           <h3 className={styles.productSubTitle}>{subTitle}</h3>
           <ProductRating rating={product.rating} />
@@ -44,7 +44,7 @@ export default function ProductMain(props) {
             price={product.price}
             id={product.id}
           />
-          <ProductAnalogs analogsIds={[1]} />
+          <ProductAnalogs analogs={props.analogs} />
         </div>
       </div>
     </section>

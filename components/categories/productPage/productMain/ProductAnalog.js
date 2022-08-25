@@ -6,22 +6,25 @@ import { useState,useEffect } from "react";
 
 
 export default function ProductAnalog(props) {
-    // const [image,setImage] = useState('')
-    // useEffect(()=>{
-    //     getImages([props.image]).then((data)=>{
-    //       setImage(data)
-    //     }) 
-    //   },[])    
+    const [image,setImage] = useState('')
+    useEffect(()=>{
+      async function getImg(){
+        const img = await getImages([props.item.images[0]])
+        setImage(img)
+      }
+      getImg()
+      },[])    
+
   return (
     <li className={styles.analogItem}>
-      <Link href="/">
+      <Link href={{pathname:`/${props.item.id}`}}>
         <a>
-          <img src={img.src} className={styles.analogImg} />
+          <img src={image} className={styles.analogImg} />
           <div className={styles.analogDescr}>
             <div className={styles.analogTitle}>
-              Something SteelSeries pro 999
+              {props.item.title}
             </div>
-            <div className={styles.analogPrice}>10 999 ₽</div>
+            <div className={styles.analogPrice}>{Math.round(props.item.price *((100 - props.item.discount) / 100))} ₽</div>
           </div>
         </a>
       </Link>
