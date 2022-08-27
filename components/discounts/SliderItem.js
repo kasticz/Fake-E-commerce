@@ -8,7 +8,18 @@ export default function SliderItem(props) {
   const prc = props.item.price;
   const dsc = props.item.discount;
   const [image, setImage] = useState();
+  const [animation,setAnimation] = useState()
 
+  useEffect(()=>{
+    setInterval(() => {
+      setTimeout(() => {
+        setAnimation(true)        
+      }, 500);      
+      setTimeout(() => {
+        setAnimation(false)
+      }, 1500);
+    }, 3000);
+  },[])
   useEffect(() => {
     async function getImg() {
       const img = await getImages([props.item.images[0]]);
@@ -25,7 +36,7 @@ export default function SliderItem(props) {
       </div>
       <div className={styles.prices}>
         <p className={styles.oldPrice}>{prc} ₽</p>
-        <p className={styles.percentDiscount}>-{dsc}%</p>
+        <p style={{animation: animation ? `${styles.discountAnimation} 1s ease-out` : ``}} className={styles.percentDiscount}>-{dsc}%</p>
         <p className={styles.newPrice}>
           {Math.round(prc * ((100 - dsc) / 100))} ₽
         </p>
@@ -39,7 +50,7 @@ export default function SliderItem(props) {
       </Link>
 
       <div className={styles.linksButtons}>
-        <button className={styles.toCart}>Отправить в корзину</button>
+        <button  className={styles.toCart}>Отправить в корзину</button>
         <Link href={{
             pathname: `/${props.item.id}`,
         }}>

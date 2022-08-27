@@ -46,7 +46,7 @@ export default function Discounts(props) {
   }
   return (
     <div
-      onMouseEnter={stopIdleSlide}
+      onMouseMove={stopIdleSlide}
       onMouseLeave={initiateIdleSlide}
       className={styles.discountsWrapper}
     >

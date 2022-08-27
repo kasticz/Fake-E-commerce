@@ -1,24 +1,38 @@
 import styles from "./CheckBoxInput.module.sass";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { mouseInputsActions } from "../../store/mousesSlice";
+import kbsSlice from "../../store/keyboardsSlice";
+
 import { useEffect } from "react";
 export default function CheckBoxInput(props) {
+  const [actions,setActions] = useState()
   const currRef = useRef();
   const inputStatus = useSelector(
-    (state) => state.mousesInputs[props.sortType][props.input.id]
+    (state) => state[`${props.productType}Inputs`][props.sortType][props.input.id]
   );
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch(mouseInputsActions.resetInputs());
+
+  useEffect(()=>{
+    async function getInputActions(){
+       await import(`../../store/${props.productType}Slice`).then(data => setActions(data[`${props.productType}InputsSlice`]) )
+    }
+    getInputActions()
+  },[])
+  
+  
+  
 
   useEffect(() => {
     currRef.current.checked = inputStatus;
   }, [inputStatus]);
+  
 
   function check(e) {
     e.preventDefault();
     dispatch(
-      mouseInputsActions.addInput({
+      actions.actions.addInput({
         value: props.input.id,
         sortType: props.sortType,
       })

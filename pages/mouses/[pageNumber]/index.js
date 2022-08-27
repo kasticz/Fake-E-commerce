@@ -11,7 +11,7 @@ export default function Mouses(props) {
   const router = useRouter();
   const mouses = useSelector((state) => state.mousesSorting);
 
-  console.log(mouses)
+
 
   useEffect(() => {
     if (!mouses) {

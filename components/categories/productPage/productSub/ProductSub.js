@@ -12,7 +12,7 @@ export default function ProductSub(props) {
       <div className={styles.characteristics}>
         <CharCategory title='Общие характеристики' data={props.product.mainChars}/>
         <CharCategory title='Специфические характеристики' data={props.product.specificChars}/>
-        <CharCategory title='Размеры' data={props.product.sizes}/>
+        {props.product.sizes && <CharCategory title='Размеры' data={props.product.sizes}/>}
       </div>
     </section>
   );

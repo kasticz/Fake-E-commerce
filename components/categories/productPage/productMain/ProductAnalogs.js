@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useEffect } from "react";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import arrowRight from "../../../../assets/images/UI/arrowLeft.svg";
@@ -12,7 +13,8 @@ export default function ProductAnalogs(props) {
     return props.analogs.map((item) => (
       <ProductAnalog item={item} key={Math.random()} />
     ));
-  },[props.analogs]);
+  }, [props.analogs]);
+
 
   const dots = [];
   for (let i = 0; i < analogs.length; i++) {
@@ -25,6 +27,9 @@ export default function ProductAnalogs(props) {
       ></div>
     );
   }
+  useEffect(()=>{
+    setPosition(0)
+  },[props.analogs])
 
   function slideLeft() {
     setPosition((prevState) =>
@@ -37,28 +42,31 @@ export default function ProductAnalogs(props) {
 
   return (
     <div className={styles.analogs}>
-{      props.analogs.length === 0 ? <p className={styles.nothingFound}>Аналогов не найдено :(</p> :
-      <Fragment>
-      <h3 className={styles.analogsTitle}>Аналоги</h3>
-      <div className={styles.sliderWrapper}>
-        <ul
-          style={{
-            transform: `translateX(${position}px)`,
-            width: `${analogs.length * 592}px`,
-          }}
-          className={styles.analogsItems}
-        >
-          {analogs}
-        </ul>
-        <button onClick={slideLeft} className={styles.slideLeft}>
-          <img src={arrowLeft.src} alt="" />
-        </button>
-        <button onClick={slideRight} className={styles.slideRight}>
-          <img src={arrowRight.src} alt="" />
-        </button>
-      </div>
-      <div className={styles.dots}>{dots}</div>
-      </Fragment>}
+      {props.analogs.length === 0 ? (
+        <p className={styles.nothingFound}>Аналогов не найдено :(</p>
+      ) : (
+        <Fragment>
+          <h3 className={styles.analogsTitle}>Аналоги</h3>
+          <div className={styles.sliderWrapper}>
+            <ul
+              style={{
+                transform: `translateX(${position}px)`,
+                width: `${analogs.length * 592}px`,
+              }}
+              className={styles.analogsItems}
+            >
+              {analogs}
+            </ul>
+            <button onClick={slideLeft} className={styles.slideLeft}>
+              <img src={arrowLeft.src} alt="" />
+            </button>
+            <button onClick={slideRight} className={styles.slideRight}>
+              <img src={arrowRight.src} alt="" />
+            </button>
+          </div>
+          <div className={styles.dots}>{dots}</div>
+        </Fragment>
+      )}
     </div>
   );
 }
