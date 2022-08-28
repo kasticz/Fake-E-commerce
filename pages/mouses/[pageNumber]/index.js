@@ -18,7 +18,7 @@ export default function Mouses(props) {
       dispatch(mouseSortingActions.setUpState(props.mouses));
     }
     dispatch(mouseSortingActions.applyDiscounts())
-  }, [router]);
+  }, []);
 
   return (
     <div className="container">

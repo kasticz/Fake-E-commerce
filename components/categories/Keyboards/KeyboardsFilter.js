@@ -47,11 +47,11 @@ export default function KeyboardFilter(props) {
             input={{ id: "<1000price" }}
           />
           <CheckBoxInput
-            label="1 001- 4 000"
+            label="1 000- 4 000"
             price={true}
             sortType="price"
             productType={productType}
-            input={{ id: "1001-4000price" }}
+            input={{ id: "1000-4000price" }}
           />
           <CheckBoxInput
             label="4 001 - 7 000"
@@ -80,31 +80,31 @@ export default function KeyboardFilter(props) {
             label="SteelSeries"
             sortType="manufacturer"
             productType={productType}
-            input={{ id: "AsusKbs" }}
+            input={{ id: "SteelSeriesKbs" }}
           />
           <CheckBoxInput
-            label="Sven"
-            sortType="manufacturer"
-            productType={productType}
-            input={{ id: "LogitechKbs" }}
-          />
-          <CheckBoxInput
-            label="Logitech"
-            sortType="manufacturer"
-            productType={productType}
-            input={{ id: "RazerKbs" }}
-          />
-          <CheckBoxInput
-            label="Razer"
+            label="Redragon"
             sortType="manufacturer"
             productType={productType}
             input={{ id: "RedragonKbs" }}
           />
           <CheckBoxInput
+            label="Logitech"
+            sortType="manufacturer"
+            productType={productType}
+            input={{ id: "LogitechKbs" }}
+          />
+          <CheckBoxInput
+            label="Razer"
+            sortType="manufacturer"
+            productType={productType}
+            input={{ id: "RazerKbs" }}
+          />
+          <CheckBoxInput
             label="ASUS"
             sortType="manufacturer"
             productType={productType}
-            input={{ id: "OklickKbs" }}
+            input={{ id: "AsusKbs" }}
           />
           <CheckBoxInput
             label="A4Tech"

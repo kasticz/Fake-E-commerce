@@ -7,13 +7,14 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { pass } from "../api/hello";
 import { MongoClient } from "mongodb";
+import findAnalogs from "../../store/findAnalogs";
 export default function ProductIds(props) {
 
   return (
     <div className={styles.productContainer}>
       <main>
         <ProductMain analogs={props.analogs} product={props.product} />
-        <ProductSub product={props.product} />
+        <ProductSub product={props.product  } />
       </main>
     </div>
   );
@@ -46,38 +47,39 @@ export async function getStaticProps(context) {
   );
   const db = client.db();
 
-  const product = await db
-    .collection("mouses")
-    .findOne({ id: +context.params.productId }, { projection: { _id: 0 } });
+  const allMouses = await db
+  .collection("mouses")
+  .find({}, { projection: { _id: 0 } })
+  .toArray();
 
-  const allProducts = await db
-    .collection("mouses")
-    .find({}, { projection: { _id: 0 } })
-    .toArray();
+  const allMats = await db
+  .collection("mats")
+  .find({}, { projection: { _id: 0 } })
+  .toArray();
 
+  const allKbs = await db
+  .collection("keyboards")
+  .find({}, { projection: { _id: 0 } })
+  .toArray();
   client.close();
 
-  const analogs = [];
-  const analogMaxPrice =
-    Math.round(product.price * ((100 - product.discount) / 100) * 1.25) + 1000;
-  const analogMinDpi = product.dpi * 0.7;
+  const allProducts = [...allMouses, ...allMats,...allKbs]
 
-  allProducts.forEach((item) => {
-    const itemPrice = item.price * ((100 - item.discount) / 100);
-    const itemDpi = item.dpi;
-    const itemWireless = item.wireless;
-    if (
-      itemPrice < analogMaxPrice &&
-      itemDpi > analogMinDpi &&
-      itemWireless === product.wireless &&
-      item.id !== product.id
-    ) {
-      analogs.push(item);
-    }
-  });
+  const currProduct = allProducts.filter(item => item.id == context.params.productId)[0]
+  const currProductType = currProduct.id > 60 ? 'Mats' : (currProduct.id > 39 && currProduct.id < 61) ? 'Monitors' : currProduct.id > 20 ? 'Keyboards' : 'Mouses'
+
+  const analogs = []
+  for(let product of allProducts){
+    const analogType = product.id > 60 ? 'Mats' : (product.id > 40 && product.id < 61) ? 'Monitors' : product.id > 20 ? 'Keyboards' : 'Mouses'
+    if(analogType === currProductType && findAnalogs[`find${currProductType}Analog`](currProduct,product) ) analogs.push(product)
+  }
+
+
+
+
   return {
     props: {
-      product,
+      product: currProduct,
       analogs,
     },
   };

@@ -9,10 +9,11 @@ export default async function handler(req, res) {
     const client = await MongoClient.connect(`mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`)
     const db = client.db()
 
-    const mouses = db.collection('mouses')
+    const coll = db.collection('keyboards')
 
-    await mouses.insertOne(data)
+    await coll.insertOne(data)
     client.close()
+    res.status(200).json('done')
 
   }else{
 
@@ -26,11 +27,4 @@ export default async function handler(req, res) {
     res.status(200).json(smth)
 
   }
-
-
-
-
-
-
-  
 }
