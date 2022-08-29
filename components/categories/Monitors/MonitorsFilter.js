@@ -51,11 +51,11 @@ export default function KeyboardFilter(props) {
             input={{ id: "<11000price" }}
           />
           <CheckBoxInput
-            label="11 000- 15 000"
+            label="11 000 - 15 000"
             price={true}
             sortType="price"
             productType={productType}
-            input={{ id: "11001-15000price" }}
+            input={{ id: "11000-15000price" }}
           />
           <CheckBoxInput
             label="15 001 - 20 000"

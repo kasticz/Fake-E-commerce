@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const client = await MongoClient.connect(`mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`)
     const db = client.db()
 
-    const coll = db.collection('keyboards')
+    const coll = db.collection('monitors')
 
     await coll.insertOne(data)
     client.close()

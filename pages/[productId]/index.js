@@ -61,9 +61,14 @@ export async function getStaticProps(context) {
   .collection("keyboards")
   .find({}, { projection: { _id: 0 } })
   .toArray();
+  
+  const allMns = await db
+  .collection("monitors")
+  .find({}, { projection: { _id: 0 } })
+  .toArray();
   client.close();
 
-  const allProducts = [...allMouses, ...allMats,...allKbs]
+  const allProducts = [...allMouses, ...allMats,...allKbs,...allMns]
 
   const currProduct = allProducts.filter(item => item.id == context.params.productId)[0]
   const currProductType = currProduct.id > 60 ? 'Mats' : (currProduct.id > 39 && currProduct.id < 61) ? 'Monitors' : currProduct.id > 20 ? 'Keyboards' : 'Mouses'

@@ -1,4 +1,4 @@
-export default function findMatsAnalogs(mainProduct, toCheckProduct) {
+export default function findKeyboardsAnalogs(mainProduct, toCheckProduct) {
   if (mainProduct.id === toCheckProduct.id) return false;
   const DesiredMinPrice = Math.round(
     mainProduct.price * ((100 - mainProduct.discount) / 100) * 0.5
