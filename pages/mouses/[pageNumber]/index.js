@@ -9,7 +9,7 @@ import { useEffect } from "react";
 export default function Mouses(props) {
   const dispatch = useDispatch();
   const router = useRouter();
-  const mouses = useSelector((state) => state.mousesSorting);
+  const mouses = useSelector((state) => state.mouses);
 
 
 

@@ -49,7 +49,7 @@ export default function SortPanel(props) {
         </li>
         <li className={styles.sortingItem}>
           <button onClick={discountDesc} className={`${sortType === 'discount' ? styles.activeSorting : ``} ${styles.sortingCriteria}`}>
-            По размеру скидки
+            По размеру скидки (в %)
           </button>
         </li>
       </ul>

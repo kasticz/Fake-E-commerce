@@ -5,6 +5,9 @@ import getImages from "../../../../store/getImages";
 import { useState, useEffect } from "react";
 
 export default function ProductAnalog(props) {
+  const price = String(Math.round(
+    props.item.price * ((100 - props.item.discount) / 100)
+  ));
   const [image, setImage] = useState("");
   useEffect(() => {
     async function getImg() {
@@ -21,12 +24,7 @@ export default function ProductAnalog(props) {
           <img src={image} className={styles.analogImg} />
           <div className={styles.analogDescr}>
             <div className={styles.analogTitle}>{props.item.title}</div>
-            <div className={styles.analogPrice}>
-              {Math.round(
-                props.item.price * ((100 - props.item.discount) / 100)
-              )}{" "}
-              ₽
-            </div>
+            <div className={styles.analogPrice}>{price.length > 3 ? `${price.slice(0,-3)} ${price.slice(-3)}` : price} ₽</div>
           </div>
         </a>
       </Link>

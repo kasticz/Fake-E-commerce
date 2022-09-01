@@ -23,6 +23,7 @@ export default function findMonitorsAnalog(mainProduct, toCheckProduct) {
   if (itemDia > desiredMinDia) score++;
   if (itemRes === desiredRes) score++;
 
+  
   return (
     score > 2 && itemPrice < desiredMaxPrice && itemPrice > DesiredMinPrice
   );

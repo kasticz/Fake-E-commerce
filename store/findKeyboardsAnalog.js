@@ -20,7 +20,7 @@ export default function findKeyboardsAnalogs(mainProduct, toCheckProduct) {
 
   let score = 0;
   if (itemType === desiredType) score++;
-  if (itemWireless === desiredWireless) score++;
+  if (itemWireless === desiredWireless || toCheckProduct.eligibleIds.includes('wirelesswiredKbs')) score++;
   if (
     itemNumberOfKeys < desiredMaxNumberOfKeys &&
     itemNumberOfKeys > desiredMinNumberOfKeys

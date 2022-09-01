@@ -7,22 +7,22 @@ export default function Nav() {
       <h1 className={styles.navTitle}>Лучшие игровые девайсы</h1>
       <ul className={styles.navCategories}>
         <li>
-          <Link href="/">
+          <Link href="/mouses/1">
             <a className={styles.navCategory}>Мыши</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/keyboards/1">
             <a className={styles.navCategory}>Клавиатуры</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/monitors/1">
             <a className={styles.navCategory}>Мониторы</a>
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/mats/1">
             <a className={styles.navCategory}>Коврики</a>
           </Link>
         </li>

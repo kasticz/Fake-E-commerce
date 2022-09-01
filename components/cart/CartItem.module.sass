@@ -1,0 +1,133 @@
+@import '../../pages/_variables'
+.item
+    width: 100%    
+    background-color: white
+    @include card
+    padding: 1rem
+    box-shadow: 5px 5px 5px $mainColor
+    max-height: 400px
+    margin-top: 2rem
+.main
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 200px
+    
+.itemImage
+    cursor: pointer
+    max-height: 200px
+.price
+    height: 100%
+    font-size: 1.7rem
+    font-weight: 700
+    margin-top: 2rem
+.delete
+    font-size: 1rem
+    margin-top: 2rem
+.itemCaption
+    width: 400px
+    @include flexCenter
+    flex-direction: column
+.delete,.itemTitle,.itemImage
+    cursor: pointer
+.itemTitle
+    &:hover
+        color: $fourthColor
+.delete
+    border-radius: 16px
+    padding: 0.5rem
+    color: $fourthColor
+    &:hover
+        background-color: $mainColor
+
+.count
+    border: 1px solid $mainColor
+    height: 50px
+    width: 150px
+    @include flexCenter
+    justify-content: space-between
+    padding: 0.5rem
+    @include card    
+    input
+        height: 35px
+        width: 50px
+        border: 1px solid $mainColor
+        font-size: 1.5rem
+        text-align: center
+        font-weight: 700
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button 
+        -webkit-appearance: none
+        margin: 0
+
+    
+    
+.minusButton,.plusButton
+    height: 35px
+    width: 35px    
+    @include flexCenter
+    padding: 0.2rem
+    @include card
+    font-size: 2rem
+    font-weight: 500
+    color: gray
+    &:hover
+        background-color: $mainColor
+    
+.extraWarrantry
+    display: flex
+    align-items: center
+    margin-top: 1rem
+    position: relative
+.warrantryOption
+    margin-left: 1rem
+    display: flex
+    align-items: center
+    input
+        position: absolute
+        right: 0
+        top: 0
+        width: 0.1px
+        height: 0.1px
+        opacity: 0
+        &:checked+.outer
+            background-color: #fc8507
+
+.inner,.outer
+    display: block
+    background-color: white
+    border-radius: 50%
+.outer
+    height: 20px
+    width: 20px
+    border: 1px solid $mainColor
+    margin-right: 1rem
+    box-shadow: 2px 2px 2px $mainColor
+    @include flexCenter
+    cursor: pointer
+    
+.inner
+    height: 8px
+    width: 8px
+    background-color: white
+.warrantryPrice
+    font-size: 1.7rem
+    color: gray
+    margin-left: 0.5rem
+
+.itemUI
+    position: relative
+.inputMessage
+    position: absolute
+    bottom: -70px
+    text-align: center
+    left: 50%
+    transform: translateX(-50%)
+    width: 350px
+    height: 60px
+    padding: 1rem
+    font-size: 1rem
+    border: 1px solid $mainColor
+    @include card
+    color: $fourthColor
+    background-color: rgb(219,214,217,0.5)

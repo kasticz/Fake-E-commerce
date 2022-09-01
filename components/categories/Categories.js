@@ -19,7 +19,7 @@ export default function Categories(props) {
           <span>Мыши</span>
         </li>
         <li className={styles.category}>
-          <Link href="/">
+          <Link href="/keyboards/1">
             <a>
               <img className={styles.categoryImg} src={keyboard.src} alt="" />
             </a>
@@ -27,7 +27,7 @@ export default function Categories(props) {
           <span>Клавиатуры</span>
         </li>
         <li className={styles.category}>
-          <Link href="/">
+          <Link href="/monitors/1">
             <a>
               <img className={styles.categoryImg} src={monitor.src} alt="" />
             </a>
@@ -35,7 +35,7 @@ export default function Categories(props) {
           <span>Мониторы</span>
         </li>
         <li className={styles.category}>
-          <Link href="/">
+          <Link href="/mats/1">
             <a>
               <img className={styles.categoryImg} src={mats.src} alt="" />
             </a>

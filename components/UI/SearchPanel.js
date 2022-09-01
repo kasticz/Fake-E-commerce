@@ -20,12 +20,12 @@ export default function SearchPanel(props) {
       </form>
       <button className={styles.Login}>Войти в аккаунт</button>
       <button className={styles.Register}>Зарегистрироваться</button>
-      <Link href="/">   
-      <a className={styles.cart}>
-      <img className={styles.cartLogo} src={cartLogo.src} alt="" />  
-        <span>{`{x1}`}</span>
-        <span className={styles.CartLink}>Корзина</span>        
-      </a>
+      <Link href="/Cart">
+        <a className={styles.cart}>
+          <img className={styles.cartLogo} src={cartLogo.src} alt="" />
+          <span>{`{x1}`}</span>
+          <span className={styles.CartLink}>Корзина</span>
+        </a>
       </Link>
     </div>
   );

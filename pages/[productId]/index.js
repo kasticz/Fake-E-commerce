@@ -71,12 +71,14 @@ export async function getStaticProps(context) {
   const allProducts = [...allMouses, ...allMats,...allKbs,...allMns]
 
   const currProduct = allProducts.filter(item => item.id == context.params.productId)[0]
-  const currProductType = currProduct.id > 60 ? 'Mats' : (currProduct.id > 39 && currProduct.id < 61) ? 'Monitors' : currProduct.id > 20 ? 'Keyboards' : 'Mouses'
+  const currProductType = currProduct.id > 60 ? 'Mats' : (currProduct.id > 40 && currProduct.id < 61) ? 'Monitors' : currProduct.id > 20 ? 'Keyboards' : 'Mouses'
 
   const analogs = []
   for(let product of allProducts){
     const analogType = product.id > 60 ? 'Mats' : (product.id > 40 && product.id < 61) ? 'Monitors' : product.id > 20 ? 'Keyboards' : 'Mouses'
-    if(analogType === currProductType && findAnalogs[`find${currProductType}Analog`](currProduct,product) ) analogs.push(product)
+    if(analogType === currProductType && findAnalogs[`find${currProductType}Analog`](currProduct,product) ){
+      analogs.push(product)
+    } 
   }
 
 

@@ -25,7 +25,6 @@ export default function findMatsAnalogs(mainProduct, toCheckProduct) {
     itemWidth < desiredMaxWidth &&
     toCheckProduct.id !== mainProduct.id;
 
-  console.log(verdict)
 
   return verdict;
 }

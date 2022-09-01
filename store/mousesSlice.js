@@ -848,7 +848,8 @@ const mousesSlice = createSlice({
     sortByInputs,
     reset,
     setUpState,
-    applyDiscounts
+    applyDiscounts,
+    fakeFilter
   },
 });
 
@@ -870,9 +871,18 @@ export function setUpState(state,payload){
   return state
 }
 
-export function applyDiscounts(state,payload){
+export function applyDiscounts(state){
   for(let product of state){
     product.newPrice = product.discount ? Math.round((product.price * ((100 - product.discount) / 100)))  : product.price
+  }
+}
+
+function fakeFilter(state,payload){
+  const id = payload.payload.id
+  const st = payload.payload.sortType
+  console.log(mousesSlice);
+  for(let product of state){
+
   }
 }
 
@@ -905,8 +915,7 @@ const mouseInputs = {
     wiredMouse: false,
     wirelessMouse: false,
     wirelesswiredMouse:false
-  },
-  
+  },  
 };
 
 export const mousesInputsSlice = createSlice({
@@ -963,6 +972,39 @@ export function sortByInputs(state, payload) {
     }
     product.viewable = viewable;
   }
+}
+
+export function previewSortByInputs(state, inputs,id) {
+  const allInputs = inputs;
+  const sortTypeKeys = [];
+  let count = 0;
+
+  for (let item of Object.keys(allInputs)) {
+    sortTypeKeys.push(allInputs[item]);
+  }
+
+  for (let product of state) {
+    let viewable = true;
+    mainLoop: for (let input of sortTypeKeys) {
+      let eligible = "initial";
+
+      subLoop: for (let key of Object.keys(input)) {
+        if (input[key]) {
+          if (product.eligibleIds.includes(key)) {
+            eligible = true;
+            break subLoop;
+          }
+          eligible = false;
+        }
+      }
+      if (!eligible) {
+        viewable = false;
+      }
+    }
+    viewable && product.eligibleIds.includes(id) ? count++ : ``
+  }
+
+  return count;
 }
 
 export const mouseInputsActions = mousesInputsSlice.actions;

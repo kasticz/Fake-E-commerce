@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import styles from "./MousesFilter.module.sass";
 
 export default function FilterPanel(props) {
+  
   const productType = 'mouses'
   const router = useRouter();
   const inputs = useSelector((state) => state.mousesInputs);
@@ -115,7 +116,7 @@ export default function FilterPanel(props) {
           filter="Максимальное разрешение датчика (dpi)"
         >
           <CheckBoxInput
-            label="Менее 5 000"
+            label="5000 и менее"
             sortType="dpi"
             productType = {productType}
             input={{ id: "<5000dpi" }}
