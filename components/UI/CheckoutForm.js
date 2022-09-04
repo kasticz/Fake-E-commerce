@@ -1,4 +1,4 @@
-import CheckoutInput from "./СheckoutInput";
+import CheckoutInput from './CheckoutInput'
 import { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import thanksIcon from "../../assets/images/UI/thanksIcon.png";
