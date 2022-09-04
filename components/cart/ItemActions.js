@@ -19,6 +19,10 @@ export default function ItemActions(props) {
           amount: +amountInput.current.value,
         })
       );
+    } else {
+      dispatch(
+        cartActions.deleteFromCart(props.id)
+      );
     }
   }
   function plusItem() {
@@ -68,7 +72,7 @@ export default function ItemActions(props) {
           -
         </button>
         <input
-          defaultValue={props.amount}
+          defaultValue={props.amount < 21 ? props.amount : 20}
           onBlur={onUiLoseFocus}
           onChange={checkAmount}
           ref={amountInput}

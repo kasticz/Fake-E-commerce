@@ -1,25 +1,44 @@
 import { useEffect, useState } from "react";
-import img from "../../assets/images/qwe.webp";
+import { useDispatch } from "react-redux";
 import getImages from "../../store/getImages";
+import { cartActions } from "../../store/cartSlice";
 import Link from "next/link";
 import styles from "./SliderItem.module.sass";
 
 export default function SliderItem(props) {
+  const dispatch = useDispatch();
   const prc = props.item.price;
   const dsc = props.item.discount;
   const [image, setImage] = useState();
-  const [animation,setAnimation] = useState()
+  const [animation, setAnimation] = useState();
+  const [addedToCart, setAddedToCart] = useState();
 
-  useEffect(()=>{
+  function addToCart() {
+    dispatch(
+      cartActions.addToCart({
+        price: Math.round(props.item.price * ((100 - props.item.discount) / 100)),
+        title: props.item.title,
+        id: props.item.id,
+        image: props.item.images[0],
+        amount: 1,
+      })
+    );
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 1500);
+  }
+
+  useEffect(() => {
     setInterval(() => {
       setTimeout(() => {
-        setAnimation(true)        
-      }, 500);      
+        setAnimation(true);
+      }, 500);
       setTimeout(() => {
-        setAnimation(false)
+        setAnimation(false);
       }, 1500);
     }, 3000);
-  },[])
+  }, []);
   useEffect(() => {
     async function getImg() {
       const img = await getImages([props.item.images[0]]);
@@ -36,24 +55,42 @@ export default function SliderItem(props) {
       </div>
       <div className={styles.prices}>
         <p className={styles.oldPrice}>{prc} ₽</p>
-        <p style={{animation: animation ? `${styles.discountAnimation} 1s ease-out` : ``}} className={styles.percentDiscount}>-{dsc}%</p>
+        <p
+          style={{
+            animation: animation
+              ? `${styles.discountAnimation} 1s ease-out`
+              : ``,
+          }}
+          className={styles.percentDiscount}
+        >
+          -{dsc}%
+        </p>
         <p className={styles.newPrice}>
           {Math.round(prc * ((100 - dsc) / 100))} ₽
         </p>
       </div>
-      <Link href={{
-            pathname: `/${props.item.id}`,
-        }}>
+      <Link
+        href={{
+          pathname: `/${props.item.id}`,
+        }}
+      >
         <a>
           <img src={image} alt="" />
         </a>
       </Link>
 
       <div className={styles.linksButtons}>
-        <button  className={styles.toCart}>Отправить в корзину</button>
-        <Link href={{
+        <button onClick={addToCart} className={styles.toCart}>
+          Отправить в корзину{" "}
+          {addedToCart && (
+            <p className={styles.addedToCartMsg}>Добавлено в корзину</p>
+          )}
+        </button>
+        <Link
+          href={{
             pathname: `/${props.item.id}`,
-        }}>
+          }}
+        >
           <a>
             <button className={styles.toProductPage}>
               Перейти на страницу товара

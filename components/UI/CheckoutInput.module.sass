@@ -1,0 +1,28 @@
+@import '../../pages/_variables'
+.wrapper
+    display: flex
+    flex-direction: column
+    margin: 1rem 2rem 0 2rem
+    font-size: 1.5rem
+    label
+        margin-bottom: 0.5rem
+        font-weight: 500
+    input
+        width: 100%
+        height: 50px
+        @include card
+        border: none        
+        box-shadow: 2px 2px 2px $mainColor
+        font-size: 1.5rem
+        padding: 0.5rem 1rem
+.incorrect
+    outline: 1px solid red
+.correct
+    outline: 1px solid #89c884
+.normal
+    outline: 1px solid $mainColor
+
+.error
+    margin-top: 1rem
+    color: #c35f5f
+

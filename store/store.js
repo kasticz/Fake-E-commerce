@@ -6,6 +6,7 @@ import { keyboardsInputsSlice } from "./keyboardsSlice";
 import mnsSlice, { monitorsInputsSlice } from "./monitorsSlice";
 import matsSlice, { matsInputsSlice } from "./matsSlice";
 import cartSlice from "./cartSlice";
+import UI from "./UISlice";
 
 const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
     monitorsInputs: monitorsInputsSlice.reducer,
     mats: matsSlice.reducer,
     matsInputs: matsInputsSlice.reducer,
-    cart: cartSlice.reducer
+    cart: cartSlice.reducer,
+    UI: UI.reducer
   },
 });
 

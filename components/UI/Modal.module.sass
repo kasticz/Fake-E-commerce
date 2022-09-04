@@ -1,0 +1,34 @@
+@import '../../pages/_variables'
+.overlay
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgb(128,128,128, 0.5)
+    z-index: 500
+    @include flexCenter
+    
+
+.modalContentWrapper
+    position: fixed
+    min-width: 600px
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    @include card
+    background-color: white
+    box-shadow: 5px 5px 5px rgb(128,128,128, 0.5)
+    padding: 0 0 2rem 0
+    z-index: 1000
+
+.title
+    width: 100%
+    height: 100px
+    background-color: $fourthColor
+    color: white
+    font-size: 2rem
+    @include card
+    @include flexCenter
+    
+    

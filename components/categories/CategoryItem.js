@@ -2,18 +2,19 @@ import styles from "./CategoryItem.module.sass";
 import img from "../../assets/images/qwe.webp";
 import ProductRating from "../UI/ProductRating";
 import Link from "next/link";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import getImages from "../../store/getImages";
 import { cartActions } from "../../store/cartSlice";
 import {useDispatch} from 'react-redux'
+import { addToCart } from "../../store/wideAppFunctions";
 export default function CategoryItem(props) {
+
+  const [addedToCart,setAddedToCart] = useState()
 
   const dispatch = useDispatch()
   const dsc = props.item.discount;
   const prc = String(props.item.price);
-  const newPrc = String(props.item.newPrice)
-
+  const newPrc = String(props.item.newPrice || Math.round(props.item.price * ((100-props.item.discount) / 100)))
   const chars = [];
   for (let item of props.item.specificChars) {
     if (item[0] === `Максимальное разрешение датчика`) {
@@ -32,15 +33,20 @@ export default function CategoryItem(props) {
     getImg();
   }, []);
 
+   
+
   function addToCart(){
     dispatch(cartActions.addToCart({
-      price: props.item.newPrice,
+      price: props.item.newPrice || Math.round(props.item.price * ((100 - props.item.discount) / 100)),
       title: props.item.title,
       id: props.item.id,
-      manufacturer: props.item.manufacturer,
       image: props.item.images[0],
       amount: 1
     }))
+    setAddedToCart(true)
+    setTimeout(() => {
+      setAddedToCart(false)
+    }, 1500);
   }
 
   return (
@@ -72,6 +78,7 @@ export default function CategoryItem(props) {
             </a>
           </Link>
           <button onClick={addToCart} className={styles.buyButton}>Купить</button>
+          {addedToCart && <p className={styles.addedToCartMsg}>Добавлено в корзину</p>}
         </div>
       </div>
     </div>

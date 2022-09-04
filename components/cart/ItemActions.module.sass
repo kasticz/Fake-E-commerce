@@ -1,4 +1,7 @@
 @import '../../pages/_variables'
+.itemUI
+    position: relative
+
 .count
     border: 1px solid $mainColor
     height: 50px
@@ -32,3 +35,18 @@
     color: gray
     &:hover
         background-color: $mainColor
+
+.inputMessage
+    position: absolute
+    bottom: -70px
+    text-align: center
+    left: 50%
+    transform: translateX(-50%)
+    width: 350px
+    height: 60px
+    padding: 1rem
+    font-size: 1rem
+    border: 1px solid $mainColor
+    @include card
+    color: $fourthColor
+    background-color: rgb(219,214,217,0.5)

@@ -36,6 +36,7 @@
 .buttons
     @include flexCenter
     width: 100%
+    position: relative
 .buyButton, .pageButton
     width: 150px
     height: 70px
@@ -47,6 +48,8 @@
         background-color: #e94040
     &:active
         background: radial-gradient($secondaryColor, #c74242)
+
+
 
 .pageButton
     width: 200px
@@ -67,3 +70,14 @@
 
 .itemChars
     margin-top: 0.5rem
+
+.addedToCartMsg
+    position: absolute
+    bottom: -70px
+    right: 0
+    height: 50px
+    width: 200px
+    background-color: #f6f6f6
+    @include flexCenter
+    border-radius: 16px
+    

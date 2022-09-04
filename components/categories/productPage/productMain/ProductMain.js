@@ -43,6 +43,8 @@ export default function ProductMain(props) {
             discount={product.discount || null}
             price={product.price}
             id={product.id}
+            title={product.title}
+            image={product.images[0]}
           />
           <ProductAnalogs analogs={props.analogs} />
         </div>
