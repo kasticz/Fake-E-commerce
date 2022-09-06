@@ -13,7 +13,6 @@ export default function ProductImages(props) {
   const router = useRouter();
   const dispatch = useDispatch();
   const modalStatus = useSelector((state) => state.UI.modalActive);
-  console.log(modalStatus)
   const [mainImgSrc, setMainImgSrc] = useState();
   const [images, setImages] = useState();
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function ProductImages(props) {
       <div className={styles.productImages}>
         <div
           onClick={() => {
-            dispatch(UIActions.toggleModal());
+            dispatch(UIActions.toggleModal('bigImage'));
           }}
           className={styles.mainImgWrapper}
         >
@@ -65,7 +64,7 @@ export default function ProductImages(props) {
           />
         </div>
       </div>
-      {modalStatus ? (
+      {modalStatus === 'bigImage' ? (
         <Modal>
           <img className={styles.ModalImg} src={mainImgSrc} alt="" />
         </Modal>

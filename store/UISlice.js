@@ -4,11 +4,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const UI = createSlice({
     name:'UI',
     initialState: {
-        modalActive: false
+        modalActive: false,
+        login: ''
     },
     reducers:{
-        toggleModal(state){
-            state.modalActive = !state.modalActive            
+        toggleModal(state,payload){
+            const modalType = payload.payload
+            state.modalActive = modalType           
+        },
+        setLogin(state,payload){
+            state.login = payload.payload
         }
     }
 })

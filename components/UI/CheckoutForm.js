@@ -149,7 +149,7 @@ export default function CheckoutForm(props) {
   return (
     <Fragment>
       {!formSubmitted ? (
-        <form onSubmit={onSubmit}>
+        <form className={styles.checkoutForm} onSubmit={onSubmit}>
           <CheckoutInput
             validation={TelValidation}
             input={{ id: "phone", type: "tel" }}
@@ -247,7 +247,7 @@ export default function CheckoutForm(props) {
       ) : (
         <div className={styles.thanksWrapper}>
           <img className={styles.thanksImg} src={thanksIcon.src} />
-          <p className={styles.thanksMsg}>Спасибо заказ! Мы скоро свяжемся с Вами.</p>
+          <p className={styles.thanksMsg}>Спасибо за заказ! Мы скоро свяжемся с Вами.</p>
         </div>
       )}
     </Fragment>

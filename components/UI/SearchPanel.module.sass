@@ -24,10 +24,10 @@
     
 .search
     @include flexCenter
-    width: 40%
+    width: 600px
     height: 70%
 .search input
-    width: 90%
+    width: 85%
     background-color: $mainColor
     border: none
     @include card
@@ -35,18 +35,18 @@
     font-size: 1.5rem
     color: $fourthColor
     padding: 10px
-    
-.search input 
     &:active,&:hover
         outline: 1px solid #70696e99       
         box-shadow: 5px 5px 15px $mainColor 
+    
+
 .searchButton
-    margin-left: 5px
+    margin-left: 1rem
     @include flexCenter
     @include card
     height: 100%
     border: none
-    width: 15%
+    min-width: 100px
     color: $fourthColor
     font-size: 1.5rem
     padding: 5px
@@ -66,14 +66,26 @@
     background: none
     border: none
     font-size: 1.5rem
-    heigh: 80%
+    height: 80%
     padding: 5px
     @include card
     color: $fourthColor
-
-.Login,.Register
     &:active,&:hover
         background: $mainColor
+
+.Login
+    margin-right: 1rem
+.name
+    font-size: 1.5rem
+    color: $fourthColor
+    margin-right: 2rem
+    @include flexCenter    
+    span
+        font-weight: 700
+        font-size: 2rem
+        margin-left: 0.5rem
+
+
 
 .cart
     height: 80%
@@ -103,17 +115,17 @@
 @keyframes bump
     0%
         transform: scale(1)
-        // background-color: $fourthColor
     25%
         transform: scale(1.1)
-        // background-color: $fourthColor
     50%
         transform: scale(1.2)
-        // background-color: $fourthColor
     75%
         transform: scale(1.1)
-        // background-color: $fourthColor
     100%
         transform: scale(1)
-        // background-color: $fourthColor
+
+.loginWrapper
+    @include flexCenter
+    
         
+    

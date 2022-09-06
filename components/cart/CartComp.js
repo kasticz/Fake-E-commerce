@@ -70,7 +70,7 @@ export default function CartComp(props) {
                   ₽
                 </span>
               </div>
-              <button onClick={()=>{dispatch(UIActions.toggleModal())}} className={styles.checkout}>
+              <button onClick={()=>{dispatch(UIActions.toggleModal('checkout'))}} className={styles.checkout}>
                 Перейти к оформлению
               </button>
             </div>
@@ -91,7 +91,7 @@ export default function CartComp(props) {
           )
         )}
       </section>
-      {modalStatus ? (
+      {modalStatus === 'checkout' ? (
         <Modal title={"Оформление"}>
           <CheckoutForm />
         </Modal>
