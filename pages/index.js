@@ -8,6 +8,10 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { UIActions } from "../store/UISlice";
 import { cartActions } from "../store/cartSlice";
+import {
+  retrieveRefreshData,
+  retrieveUserData,
+} from "../store/wideAppFunctions";
 
 export default function Home(props) {
   const cart = useSelector((state) => state.cart);
@@ -16,76 +20,7 @@ export default function Home(props) {
   const dispatch = useDispatch();
 
 
-  useEffect(() => {
-    async function retrieveUserDataAndRefresh() {
-      const response = await fetch("./api/refreshTokens", {
-        method: "POST",
-        body: JSON.stringify({ token: cookies.refreshToken }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const retrievedData = await response.json();
 
-      const retrievedCart =
-        retrievedData.resultUserData || [];
-      const retrievedLogin =
-        retrievedData.resultUserData.login;
-
-      dispatch(cartActions.setCart(retrievedCart));
-      retrievedLogin ? dispatch(UIActions.setLogin(retrievedLogin)) : "";
-      setCookie("accessToken", retrievedData.resultRefresh.access_token, {
-        path: "/",
-        expires: new Date(
-          Date.now() + retrievedData.resultRefresh.expires_in * 1000
-        ),
-      });
-    }
-    async function retrieveUserData() {
-      const response = await fetch("./api/retrieveCart", {
-        method: "POST",
-        body: JSON.stringify({
-          uid: cookies.userID,
-          idToken: cookies.accessToken,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const retrievedData = await response.json();
-      const retrievedCart = retrievedData || [];
-      const retrievedLogin = retrievedData.login;
-
-      dispatch(cartActions.setCart(retrievedCart));
-      retrievedLogin ? dispatch(UIActions.setLogin(retrievedLogin)) : "";
-    }
-
-    if (cookies.refreshToken && !cookies.accessToken) {
-      retrieveUserDataAndRefresh();
-    } else if (cookies.accessToken && cookies.userID) {
-      retrieveUserData();
-    }
-  }, []);
-  useEffect(() => {
-    async function updateCart() {
-      console.log(cart)
-      const response = await fetch("./api/updateCart", {
-        method: "POST",
-        body: JSON.stringify({
-          localId: cookies.userID,
-          idToken: cookies.accessToken,
-          cart: cart
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json()
-    }
-    if (cookies.accessToken && cookies.userID && cart) {
-      updateCart();
-    }
-  }, [cart, cookies.accessToken, cookies.userID]);
 
   return (
     <main className="main">

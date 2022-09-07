@@ -880,7 +880,6 @@ export function applyDiscounts(state){
 function fakeFilter(state,payload){
   const id = payload.payload.id
   const st = payload.payload.sortType
-  console.log(mousesSlice);
   for(let product of state){
 
   }

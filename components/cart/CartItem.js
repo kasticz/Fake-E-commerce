@@ -15,11 +15,10 @@ function CartItem(props) {
     state.cart.find((item) => item.id === props.id)
   );
 
-
-  const [warrantryActive, setWarrantryActive] = useState(false);
+  const [warrantryActive, setWarrantryActive] = useState(item.warrantryStatus);
 
   const prc = String(
-    warrantryActive
+    warrantryActive || item.warrantryStatus
       ? Math.round(item.price + item.price * 0.15) * item.amount
       : item.price * item.amount
   );
@@ -85,7 +84,7 @@ function CartItem(props) {
         <span>Дополнительная гарантия:</span>
         <div className={styles.warrantryOption}>
           <input
-            defaultChecked
+            defaultChecked={!item.warrantryStatus}
             ref={noWarrantryRef}
             name="warrantry"
             type="radio"
@@ -96,7 +95,12 @@ function CartItem(props) {
           <label>Без доп. гарантии</label>
         </div>
         <div className={styles.warrantryOption}>
-          <input ref={twelveWarrantryRef} name="warrantry" type="radio" />
+          <input
+            defaultChecked={item.warrantryStatus}
+            ref={twelveWarrantryRef}
+            name="warrantry"
+            type="radio"
+          />
           <span onClick={checkTwelveWr} className={styles.outer}>
             <span className={styles.inner}></span>
           </span>

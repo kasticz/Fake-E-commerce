@@ -24,10 +24,11 @@
     
 .search
     @include flexCenter
-    width: 600px
+    max-width: 650px
     height: 70%
+    position: relative
 .search input
-    width: 85%
+    max-width: 400px
     background-color: $mainColor
     border: none
     @include card
@@ -46,7 +47,7 @@
     @include card
     height: 100%
     border: none
-    min-width: 100px
+    width: 110px
     color: $fourthColor
     font-size: 1.5rem
     padding: 5px
@@ -128,4 +129,133 @@
     @include flexCenter
     
         
+.foundProducts
+    position: absolute
+    left: 0
+    @include flexCenter
+    flex-direction: column
+    background-color: white
+    min-width: 100%
+    max-width: 120%
+    border-bottom-left-radius: 32px
+    border-bottom-right-radius: 32px
+    padding: 1rem 0.5rem
+    overflow-x: hidden
     
+.foundItem
+    width: 100%
+    text-align: center
+    height: 50px
+    padding: 0.5rem
+    font-size: 1rem
+    @include flexCenter
+    justify-content: space-between
+    @include card
+    &:nth-child(n+2)
+        margin-top: 5px
+    &:hover
+        background-color: $fourthColor
+        color: white
+        .foundTitle,.foundPrice
+            color: white
+.foundTitle
+    color: $fourthColor
+.foundPrice
+    font-weight: 700
+
+.spinnerWrapper
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: -100px
+
+.spinner  
+  top: 0
+  left: 0
+  display: inline-block
+  position: relative
+  width: 80px
+  height: 80px
+  margin-right: 1rem
+
+.spinner div 
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite
+  transform-origin: 40px 40px
+  
+
+.spinner div:after 
+  content: " "
+  display: block
+  position: absolute
+  width: 7px
+  height: 7px
+  border-radius: 50%
+  background: #fff
+  margin: -4px 0 0 -4px
+  background-color: black
+
+.spinner div:nth-child(1) 
+  animation-delay: -0.036s
+  
+
+.spinner div:nth-child(1):after   
+  top: 63px
+  left: 63px
+
+.spinner div:nth-child(2) 
+  animation-delay: -0.072s
+
+.spinner div:nth-child(2):after 
+  top: 68px
+  left: 56px
+
+.spinner div:nth-child(3) 
+  animation-delay: -0.108s
+
+.spinner div:nth-child(3):after 
+  top: 71px
+  left: 48px
+
+.spinner div:nth-child(4) 
+  animation-delay: -0.144s
+
+.spinner div:nth-child(4):after 
+  top: 72px
+  left: 40px
+
+.spinner div:nth-child(5) 
+  animation-delay: -0.18s
+
+.spinner div:nth-child(5):after 
+  top: 71px
+  left: 32px
+
+.spinner div:nth-child(6) 
+  animation-delay: -0.216s
+
+.spinner div:nth-child(6):after 
+  top: 68px
+  left: 24px
+
+.spinner div:nth-child(7) 
+  animation-delay: -0.252s
+
+.spinner div:nth-child(7):after 
+  top: 63px
+  left: 17px
+
+.spinner div:nth-child(8) 
+  animation-delay: -0.288s
+
+.spinner div:nth-child(8):after 
+  top: 56px
+  left: 12px
+
+@keyframes lds-roller 
+  0% 
+    transform: rotate(0deg)
+  
+  100% 
+    transform: rotate(360deg)
+  
+

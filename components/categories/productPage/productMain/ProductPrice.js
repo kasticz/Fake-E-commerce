@@ -7,7 +7,7 @@ import styles from "./ProductPrice.module.sass";
 export default function ProductPrice(props) {
   const dispatch = useDispatch();
   const amountRef = useRef();
-  const itemInCart = useSelector(state=> state.cart.find(item=>item.id === props.id))
+  const itemInCart = useSelector(state=> state.cart ? state.cart.find(item=>item.id === props.id) : {})
   const dsc = props.discount;
   const price = String(props.price);
   const newPrice = Math.round(props.price * ((100 - dsc) / 100));

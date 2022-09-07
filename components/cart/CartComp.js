@@ -14,6 +14,7 @@ import CheckoutForm from "../UI/CheckoutForm.js";
 export default function CartComp(props) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const cartLength = useSelector((state) => (cart ? cart.length : 0));
   const modalStatus = useSelector((state) => state.UI.modalActive);
   const [suggestedItem, setSuggestedItem] = useState(false);
 
@@ -23,23 +24,27 @@ export default function CartComp(props) {
       const item = await response.json();
       setSuggestedItem(item);
     }
-    if (cart.length === 0) {
+    if (cartLength === 0) {
       getRandomItem();
     } else {
       setSuggestedItem(false);
     }
-  }, [cart.length]);
+  }, [cartLength]);
 
   const cartItemsList = useMemo(() => {
-    return cart.map((item) => {
-      return <CartItem key={Math.random()} id={item.id} />;
-    });
-  }, [cart.length]);
-  const totalAmount = cart.reduce((acc, item) => {
-    acc += item.amount;
-    return acc;
-  }, 0);
-  const totalPrice = String(
+    if (cart) {
+      return cart.map((item) => {
+        return <CartItem key={Math.random()} id={item.id} />;
+      });
+    }
+  }, [cartLength]);
+  const totalAmount = cart
+    ? cart.reduce((acc, item) => {
+        acc += item.amount;
+        return acc;
+      }, 0)
+    : 0;
+  const totalPrice = cart ? String(
     cart.reduce((acc, item) => {
       acc +=
         item.amount *
@@ -48,13 +53,13 @@ export default function CartComp(props) {
           : item.price);
       return acc;
     }, 0)
-  );
+  ) : 0;
   const totalPriceWord = cartTotalAmountWord(totalAmount);
 
   return (
     <main className={styles.cart}>
       <section className={styles.products}>
-        {cart.length > 0 ? (
+        {cart && cart.length > 0 ? (
           <Fragment>
             <div className={styles.itemsWrapper}>{cartItemsList}</div>
             <div className={styles.totalWrapper}>
@@ -70,7 +75,12 @@ export default function CartComp(props) {
                   ₽
                 </span>
               </div>
-              <button onClick={()=>{dispatch(UIActions.toggleModal('checkout'))}} className={styles.checkout}>
+              <button
+                onClick={() => {
+                  dispatch(UIActions.toggleModal("checkout"));
+                }}
+                className={styles.checkout}
+              >
                 Перейти к оформлению
               </button>
             </div>
@@ -91,7 +101,7 @@ export default function CartComp(props) {
           )
         )}
       </section>
-      {modalStatus === 'checkout' ? (
+      {modalStatus === "checkout" ? (
         <Modal title={"Оформление"}>
           <CheckoutForm />
         </Modal>

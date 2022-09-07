@@ -965,7 +965,6 @@ export const mnsSlice = createSlice({
 
 export function filterMns(payload) {
   const inputs = payload.inputs;
-  console.log(inputs);
   return (dispatch) => {
     dispatch(mnsSlice.actions.makeAllUnViewable());
     dispatch(mnsSlice.actions.sortByInputs(inputs));

@@ -106,7 +106,6 @@ export default function CheckoutForm(props) {
     for (let i = 0; i < input.length; i++) {
       for (let i = 0; i < input.length; i++) {
         if (!alphabet.includes(input[i].toLowerCase())) {
-          console.log(input[i].toLowerCase());
           shouldBeCyrillic = false;
           break;
         }

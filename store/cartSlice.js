@@ -13,7 +13,7 @@ const cartSlice = createSlice({
             const item = state ? state.find(item=>item.id === id) : null
             const amount = payload.payload.amount
             if(item){
-                item.amount + amount > 20 ? item.amount = 20 : item.amount + amount 
+                item.amount + amount > 20 ? item.amount = 20 : item.amount = item.amount + amount 
             }else{
                 if(state){
                     state.push(payload.payload)

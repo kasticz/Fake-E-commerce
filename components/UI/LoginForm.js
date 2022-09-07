@@ -147,6 +147,10 @@ export default function LoginForm(props) {
           path: "/",
           expires: new Date(Date.now() + data.resultRegister.expiresIn * 1000),
         });
+        setCookie("userID", data.resultRegister.localId, {
+          path: "/",
+          expires: new Date('December 17, 2030 03:24:00')
+        });
       } catch (err) {
         errorStatus = true;
         const error = err.message;
@@ -164,7 +168,6 @@ export default function LoginForm(props) {
     errorStatus ? "" : dispatch(UIActions.toggleModal(""));
     const retrievedCart = retrievedData || [];
     const retrievedLogin = retrievedData.login;
-    console.log(retrievedLogin)
     retrievedCart ? dispatch(cartActions.setCart(retrievedCart)) : "";
     retrievedLogin ? dispatch(UIActions.setLogin(retrievedLogin)) : "";
   }
@@ -178,6 +181,7 @@ export default function LoginForm(props) {
   const formCorrect = true;
   return (
     <form onSubmit={submitForm} className={styles.loginForm}>
+      {modalStatus === 'register' && <p className={styles.warning}>Не вводите свои реальные данные!</p>}
       <CheckoutInput
         getValue={getLogin}
         validation={loginValidation}

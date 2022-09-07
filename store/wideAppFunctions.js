@@ -12,5 +12,64 @@ export function cartTotalAmountWord(totalAmount) {
         ? "товара"
         : "товаров"
       : "товаров";
-      return totalPriceWord
+  return totalPriceWord;
+}
+
+export async function retrieveRefreshData(refreshToken) {
+  const response = await fetch("../api/refreshTokens", {
+    method: "POST",
+    body: JSON.stringify({ token: refreshToken }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const retrievedData = await response.json();
+
+  const retrievedCart = retrievedData.resultUserData || [];
+  const retrievedLogin = retrievedData.resultUserData.login;
+  return {
+    retrievedCart,
+    retrievedLogin,
+    accessToken: retrievedData.resultRefresh.id_token,
+    userID: retrievedData.resultRefresh.user_id,
+    expiration: retrievedData.resultRefresh.expires_in * 1000,
+  };
+}
+
+export async function retrieveUserData(userID,accessToken) {
+  const response = await fetch("../api/retrieveCart", {
+    method: "POST",
+    body: JSON.stringify({
+      uid: userID,
+      idToken: accessToken,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const retrievedData = await response.json();
+  const retrievedCart = retrievedData || [];
+  const retrievedLogin = retrievedData.login;
+  return {
+    retrievedCart,
+    retrievedLogin
+  }
+
+}
+
+export async function findProducts(input){
+  const response = await fetch("../api/retrieveProducts", {
+    method: "POST",
+    body: JSON.stringify({
+      input: input,
+      idToken: 1,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const retrievedProducts = await response.json()
+  
+  return retrievedProducts
 }

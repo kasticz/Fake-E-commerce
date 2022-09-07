@@ -19,7 +19,6 @@ export default async function handler(req, res) {
     const responsePostCart = await fetch(
       `https://react-72706-default-rtdb.europe-west1.firebasedatabase.app/users/${resultRegister.localId}.json?auth=${resultRegister.idToken}`);    
     const resultPostCart = await responsePostCart.json()
-    console.log(resultPostCart)
     res.status(200).json({resultRegister,resultPostCart});
 
 }
