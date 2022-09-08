@@ -5,6 +5,9 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "../store/store";
 import {CookiesProvider} from 'react-cookie'
+import Footer from '../components/Footer'
+
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -16,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Nav/>
       <SearchPanel/>
         <Component {...pageProps} />
+        <Footer/>
     </Provider>
     </CookiesProvider>
   );

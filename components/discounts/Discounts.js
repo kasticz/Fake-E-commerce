@@ -1,12 +1,13 @@
 import arrowRight from "../../assets/images/UI/arrowLeft.svg";
 import arrowLeft from "../../assets/images/UI/arrowRight.svg";
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import styles from "./Discounts.module.sass";
 import SliderItem from "./SliderItem";
+import { debounce } from "../../store/wideAppFunctions";
 
 export default function Discounts(props) {
   let idleSlide;
+  const debouncedSlide = debounce(stopIdleSlide,100)
   const items = useMemo(() => {
     return props.products.map((item) => {
       return <SliderItem item={item} key={Math.random()} />;
@@ -36,17 +37,17 @@ export default function Discounts(props) {
 
   function slideLeft() {
     setPosition((prevState) =>
-      prevState <= (items.length - 1) * -1218 ? prevState : prevState - 1218
+      prevState <= (items.length - 1) * -1212 ? prevState : prevState - 1212
     );
   }
   function slideRight() {
     setPosition((prevState) =>
-      prevState === 0 ? prevState : prevState + 1218
+      prevState === 0 ? prevState : prevState + 1212
     );
   }
   return (
     <div
-      onMouseMove={stopIdleSlide}
+      onMouseMove={debouncedSlide}
       onMouseLeave={initiateIdleSlide}
       className={styles.discountsWrapper}
     >
@@ -54,7 +55,7 @@ export default function Discounts(props) {
       <div
         style={{
           transform: `translateX(${position}px)`,
-          width: `${(items.length - 1) * 1218}`,
+          width: `${(items.length - 1) * 1212}`,
         }}
         className={styles.discountsSlider}
       >

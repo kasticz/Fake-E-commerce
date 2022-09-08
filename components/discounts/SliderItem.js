@@ -5,18 +5,26 @@ import { cartActions } from "../../store/cartSlice";
 import Link from "next/link";
 import styles from "./SliderItem.module.sass";
 
+
 export default function SliderItem(props) {
   const dispatch = useDispatch();
-  const prc = props.item.price;
+  const p = String(props.item.price)
+  const prc = String(Math.round(props.item.price * ((100-props.item.discount) / 100)))
+  const oldPrice = p.length > 3 ? `${p.slice(0,-3)} ${p.slice(-3)}` : p
+  const price = prc.length > 3 ? `${prc.slice(0,-3)} ${prc.slice(-3)}` : prc
   const dsc = props.item.discount;
   const [image, setImage] = useState();
-  const [animation, setAnimation] = useState();
+  const [animation, setAnimation] = useState(true);
   const [addedToCart, setAddedToCart] = useState();
+  
 
   function addToCart() {
+
     dispatch(
       cartActions.addToCart({
-        price: Math.round(props.item.price * ((100 - props.item.discount) / 100)),
+        price: Math.round(
+          props.item.price * ((100 - props.item.discount) / 100)
+        ),
         title: props.item.title,
         id: props.item.id,
         image: props.item.images[0],
@@ -51,10 +59,14 @@ export default function SliderItem(props) {
     <div className={styles.discountItem}>
       <div className={styles.discountMsg}>
         <p className={styles.discount}>Скидка на</p>
-        <p className={styles.product}>{props.item.title}</p>
+        <Link href={{ pathname: `/${props.item.id}` }}>
+          <a>
+            <p className={styles.product}>{props.item.title}</p>
+          </a>
+        </Link>
       </div>
       <div className={styles.prices}>
-        <p className={styles.oldPrice}>{prc} ₽</p>
+        <p className={styles.oldPrice}>{oldPrice} ₽</p>
         <p
           style={{
             animation: animation
@@ -66,7 +78,7 @@ export default function SliderItem(props) {
           -{dsc}%
         </p>
         <p className={styles.newPrice}>
-          {Math.round(prc * ((100 - dsc) / 100))} ₽
+          {price} ₽
         </p>
       </div>
       <Link
@@ -74,8 +86,8 @@ export default function SliderItem(props) {
           pathname: `/${props.item.id}`,
         }}
       >
-        <a>
-          <img src={image} alt="" />
+        <a className={styles.productImageWrapper}>
+          <img className={styles.productImage} src={image} alt="" />
         </a>
       </Link>
 

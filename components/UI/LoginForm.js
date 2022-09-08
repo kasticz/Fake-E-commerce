@@ -96,7 +96,6 @@ export default function LoginForm(props) {
           },
         });
         const data = await req.json();
-        console.log(data)
 
         retrievedData = data.resultPostCart;
         if (data.resultRegister.error) {

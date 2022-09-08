@@ -1,12 +1,11 @@
 import styles from "./CategoryItem.module.sass";
-import img from "../../assets/images/qwe.webp";
+
 import ProductRating from "../UI/ProductRating";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import getImages from "../../store/getImages";
-import { cartActions } from "../../store/cartSlice";
+import { cartActions } from "../../store/cartSlice";  
 import {useDispatch} from 'react-redux'
-import { addToCart } from "../../store/wideAppFunctions";
 export default function CategoryItem(props) {
 
   const [addedToCart,setAddedToCart] = useState()

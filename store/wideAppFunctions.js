@@ -36,7 +36,7 @@ export async function retrieveRefreshData(refreshToken) {
   };
 }
 
-export async function retrieveUserData(userID,accessToken) {
+export async function retrieveUserData(userID, accessToken) {
   const response = await fetch("../api/retrieveCart", {
     method: "POST",
     body: JSON.stringify({
@@ -52,12 +52,11 @@ export async function retrieveUserData(userID,accessToken) {
   const retrievedLogin = retrievedData.login;
   return {
     retrievedCart,
-    retrievedLogin
-  }
-
+    retrievedLogin,
+  };
 }
 
-export async function findProducts(input){
+export async function findProducts(input) {
   const response = await fetch("../api/retrieveProducts", {
     method: "POST",
     body: JSON.stringify({
@@ -69,7 +68,22 @@ export async function findProducts(input){
     },
   });
 
-  const retrievedProducts = await response.json()
-  
-  return retrievedProducts
+  const retrievedProducts = await response.json();
+
+  return retrievedProducts;
+}
+
+export function debounce(fn, ms) {
+  let allowFuncion = true;
+  return (params) => {
+    if (!allowFuncion) {
+      return;
+    } else {
+      allowFuncion = false;
+      setTimeout(() => {
+        allowFuncion = true;
+      }, ms);
+      return fn(params);
+    }
+  };
 }

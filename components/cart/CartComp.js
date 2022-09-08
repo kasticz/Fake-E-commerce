@@ -17,6 +17,7 @@ export default function CartComp(props) {
   const cartLength = useSelector((state) => (cart ? cart.length : 0));
   const modalStatus = useSelector((state) => state.UI.modalActive);
   const [suggestedItem, setSuggestedItem] = useState(false);
+  const login = useSelector((state) => state.UI.login);
 
   useEffect(() => {
     async function getRandomItem() {
@@ -44,17 +45,27 @@ export default function CartComp(props) {
         return acc;
       }, 0)
     : 0;
-  const totalPrice = cart ? String(
-    cart.reduce((acc, item) => {
-      acc +=
-        item.amount *
-        (item.warrantryStatus
-          ? Math.round(item.price + item.price * 0.15)
-          : item.price);
-      return acc;
-    }, 0)
-  ) : 0;
+  const totalPrice = cart
+    ? String(
+        cart.reduce((acc, item) => {
+          acc +=
+            item.amount *
+            (item.warrantryStatus
+              ? Math.round(item.price + item.price * 0.15)
+              : item.price);
+          return acc;
+        }, 0)
+      )
+    : 0;
   const totalPriceWord = cartTotalAmountWord(totalAmount);
+
+  function checkRegistry() {
+    if (login) {
+      dispatch(UIActions.toggleModal("checkout"));
+    } else {
+      dispatch(UIActions.toggleModal("chooseLogin"));
+    }
+  }
 
   return (
     <main className={styles.cart}>
@@ -75,12 +86,7 @@ export default function CartComp(props) {
                   ₽
                 </span>
               </div>
-              <button
-                onClick={() => {
-                  dispatch(UIActions.toggleModal("checkout"));
-                }}
-                className={styles.checkout}
-              >
+              <button onClick={checkRegistry} className={styles.checkout}>
                 Перейти к оформлению
               </button>
             </div>
@@ -101,12 +107,32 @@ export default function CartComp(props) {
           )
         )}
       </section>
-      {modalStatus === "checkout" ? (
+      {modalStatus === "checkout" && (
         <Modal title={"Оформление"}>
           <CheckoutForm />
         </Modal>
-      ) : (
-        ""
+      )}
+      {modalStatus === "chooseLogin" && (
+        <Modal title="Для оформления покупки ввойдите в аккаунт">
+          <div className={styles.buttonsWrapper}>
+          <button
+            onClick={() => {
+              dispatch(UIActions.toggleModal("login"));
+            }}
+            className={styles.toLogin}
+          >
+            У меня уже есть аккаунт
+          </button>
+          <button
+            onClick={() => {
+              dispatch(UIActions.toggleModal("register"));
+            }}
+            className={styles.toRegister}
+          >
+            У меня нет аккаунта
+          </button>
+          </div>
+        </Modal>
       )}
     </main>
   );
