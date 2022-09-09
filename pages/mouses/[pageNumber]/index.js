@@ -5,7 +5,7 @@ import { mouseSortingActions, filter } from "../../../store/mousesSlice";
 import { pass } from "../../api/hello";
 import { MongoClient } from "mongodb";
 import { useEffect } from "react";
-import ErrorPage from "../../../components/errorPage";
+import ErrorPage from '../../../components/ErrorPage'
 
 export default function Mouses(props) {
   const dispatch = useDispatch();

@@ -6,7 +6,7 @@ import { MongoClient } from "mongodb";
 import { useEffect } from "react";
 
 import { monitorsActions } from "../../../store/monitorsSlice";
-import ErrorPage from "../../../components/errorPage";
+import ErrorPage from '../../../components/ErrorPage'
 
 export default function Mouses(props) {
   const dispatch = useDispatch();
