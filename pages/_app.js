@@ -6,11 +6,14 @@ import { Provider } from "react-redux";
 import store from "../store/store";
 import {CookiesProvider} from 'react-cookie'
 import Footer from '../components/Footer'
+import { useDispatch } from "react-redux";
+import { UIActions } from "../store/UISlice";
 
 
 
 function MyApp({ Component, pageProps }) {
 
+  
   
 
   return (

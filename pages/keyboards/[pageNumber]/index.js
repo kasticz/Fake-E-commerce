@@ -5,25 +5,27 @@ import { pass } from "../../api/hello";
 import { MongoClient } from "mongodb";
 import { useEffect } from "react";
 import { kbsActions } from "../../../store/keyboardsSlice";
+import ErrorPage from "../../../components/errorPage";
 
 export default function Mouses(props) {
   const dispatch = useDispatch();
   const router = useRouter();
   const kbs = useSelector((state) => state.keyboards);
- 
+
   useEffect(() => {
-    if (!kbs) {
+    if (!kbs && props.kbs) {
       dispatch(kbsActions.setUpState(props.kbs));
     }
-    dispatch(kbsActions.applyDiscounts())
+    if(props.kbs){
+      dispatch(kbsActions.applyDiscounts());
+    }
+
   }, []);
 
 
   return (
     <div className="container">
-      <KeyboardsPage
-        items={kbs || props.kbs}
-      />
+      {props.kbs ? <KeyboardsPage items={kbs || props.kbs} /> : <ErrorPage />}
     </div>
   );
 }
@@ -44,7 +46,7 @@ export function getStaticPaths(context) {
         params: { pageNumber: "4" },
       },
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 export async function getStaticProps(context) {
@@ -61,7 +63,7 @@ export async function getStaticProps(context) {
   client.close();
   return {
     props: {
-      kbs: currentProducts,
+      kbs: context.params.pageNumber  < 5 ? currentProducts : null,
     },
   };
 }

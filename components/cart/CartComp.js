@@ -106,6 +106,20 @@ export default function CartComp(props) {
             </div>
           )
         )}
+        {!suggestedItem && (!cart || cartLength === 0) && (
+          <div className={styles.spinnerWrapper}>
+            <div className={styles.spinner}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        )}
       </section>
       {modalStatus === "checkout" && (
         <Modal title={"Оформление"}>
@@ -115,22 +129,22 @@ export default function CartComp(props) {
       {modalStatus === "chooseLogin" && (
         <Modal title="Для оформления покупки ввойдите в аккаунт">
           <div className={styles.buttonsWrapper}>
-          <button
-            onClick={() => {
-              dispatch(UIActions.toggleModal("login"));
-            }}
-            className={styles.toLogin}
-          >
-            У меня уже есть аккаунт
-          </button>
-          <button
-            onClick={() => {
-              dispatch(UIActions.toggleModal("register"));
-            }}
-            className={styles.toRegister}
-          >
-            У меня нет аккаунта
-          </button>
+            <button
+              onClick={() => {
+                dispatch(UIActions.toggleModal("login"));
+              }}
+              className={styles.toLogin}
+            >
+              У меня уже есть аккаунт
+            </button>
+            <button
+              onClick={() => {
+                dispatch(UIActions.toggleModal("register"));
+              }}
+              className={styles.toRegister}
+            >
+              У меня нет аккаунта
+            </button>
           </div>
         </Modal>
       )}

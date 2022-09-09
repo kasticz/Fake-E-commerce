@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import styles from "./Nav.module.sass";
 
 export default function Nav() {
@@ -29,13 +30,16 @@ export default function Nav() {
       </ul>
       <div className={styles.support}>
         <span>Служба поддержки:</span>
-        <a className={styles.telephone} href="tel:79000000000">
-          +7 900-000-00-00 (Круглосуточно)
-        </a>
-        <span>или</span>
-        <a className={styles.email} href="mailto:something@example.com">
-          something@example.com
-        </a>
+        <div className={styles.linksWrapper}>
+          <a className={styles.telephone} href="tel:79000000000">
+            +7 900-000-00-00 (Круглосуточно)
+          </a>
+          <span>или</span>
+          <hr />
+          <a className={styles.email} href="mailto:something@example.com">
+            something@example.com
+          </a>
+        </div>
       </div>
     </nav>
   );

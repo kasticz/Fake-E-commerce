@@ -11,12 +11,13 @@ export default function LoginForm(props) {
   const cart = useSelector((state) => state.cart);
   const [loginCorrect, setLoginCorrect] = useState(true);
   const [passwordCorrect, setPasswordCorrect] = useState(
-    modalStatus === "register" ? true : false
+    modalStatus === "login" ? true : false
   );
   const [loginInput, setLoginInput] = useState();
   const [passwordInput, setPasswordInput] = useState();
   const [cookies, setCookie] = useCookies(["user"]);
   const [loginError, setLoginError] = useState("");
+  const formCorrect = passwordCorrect && loginCorrect
 
   function loginValidation(input) {
     return [
@@ -177,7 +178,8 @@ export default function LoginForm(props) {
     setPasswordInput(input);
   }
 
-  const formCorrect = true;
+
+
   return (
     <form onSubmit={submitForm} className={styles.loginForm}>
       {modalStatus === 'register' && <p className={styles.warning}>Не вводите свои реальные данные!</p>}
@@ -205,9 +207,9 @@ export default function LoginForm(props) {
           Назад
         </button>
         <button
-          disabled={!formCorrect}
+          disabled={modalStatus === 'register' && !formCorrect ? true : false}
           className={
-            formCorrect
+            modalStatus === 'login' || formCorrect
               ? styles.confirmButton
               : ` ${styles.confirmButton} ${styles.disabledButton}`
           }

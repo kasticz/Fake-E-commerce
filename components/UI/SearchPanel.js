@@ -12,6 +12,7 @@ import { Fragment } from "react";
 import { useCookies } from "react-cookie";
 import LoginForm from "./LoginForm";
 import {
+  debounce,
   retrieveRefreshData,
   retrieveUserData,
 } from "../../store/wideAppFunctions";
@@ -81,6 +82,19 @@ export default function SearchPanel(props) {
       updateData();
     }
   }, []);
+  useEffect(() => {
+    function resize() {
+      dispatch(
+        UIActions.setDimensions({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        })
+      );
+    }
+    const debouncedResize = debounce(resize,300)
+    window.addEventListener(`resize`, debouncedResize);
+    resize()
+  }, []);
 
   useEffect(() => {
     async function updateCart() {
@@ -136,19 +150,24 @@ export default function SearchPanel(props) {
 
   const foundProductsComp = foundProducts
     ? foundProducts.map((item) => {
-      const prc = item.price ? Math.round(item.price * ((100 - item.discount) / 100)) : null
-      const price = prc ? String(prc).length > 3 ? `${String(prc).slice(0,-3)} ${String(prc).slice(-3)} ₽` : `${prc} ₽` : ''
+        const prc = item.price
+          ? Math.round(item.price * ((100 - item.discount) / 100))
+          : null;
+        const price = prc
+          ? String(prc).length > 3
+            ? `${String(prc).slice(0, -3)} ${String(prc).slice(-3)} ₽`
+            : `${prc} ₽`
+          : "";
         return item.id ? (
           <Link key={Math.random()} href={{ pathname: `/${item.id}` }}>
             <a className={styles.foundItem}>
               <div className={styles.foundTitle}>{item.title}</div>
               {price && <div className={styles.foundPrice}>{price}</div>}
-              
             </a>
           </Link>
         ) : (
           <a className={styles.foundItem}>
-            <div>{item.title}</div>            
+            <div>{item.title}</div>
           </a>
         );
       })
@@ -156,7 +175,6 @@ export default function SearchPanel(props) {
 
   return (
     <Fragment>
-      (
       <div className={styles.panelWrapper}>
         <Link href="/">
           <a className={styles.logoWrapper}>
@@ -165,11 +183,10 @@ export default function SearchPanel(props) {
         </Link>
         <form
           onBlur={(e) => {
-            e.preventDefault()
+            e.preventDefault();
             setTimeout(() => {
-              setFoundProducts(null);              
+              setFoundProducts(null);
             }, 1000);
-            
           }}
           className={styles.search}
         >
@@ -267,7 +284,6 @@ export default function SearchPanel(props) {
           </a>
         </Link>
       </div>
-      )
       {modalStatus === "register" && (
         <Modal title={"Регистрация"}>
           <LoginForm type={"register"} />

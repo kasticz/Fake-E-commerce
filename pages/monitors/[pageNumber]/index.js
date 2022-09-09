@@ -6,6 +6,7 @@ import { MongoClient } from "mongodb";
 import { useEffect } from "react";
 
 import { monitorsActions } from "../../../store/monitorsSlice";
+import ErrorPage from "../../../components/errorPage";
 
 export default function Mouses(props) {
   const dispatch = useDispatch();
@@ -13,18 +14,20 @@ export default function Mouses(props) {
   const mns = useSelector((state) => state.monitors);
  
   useEffect(() => {
-    if (!mns) {
+    if (!mns && props.mns) {
       dispatch(monitorsActions.setUpState(props.monitors));
     }
-    dispatch(monitorsActions.applyDiscounts())
+    if(props.mns){
+      dispatch(monitorsActions.applyDiscounts())
+    }
+
   }, []);
 
 
   return (
     <div className="container">
-      <MonitorsPage
-        items={mns || props.monitors}
-      />
+      {props.mns ? <MonitorsPage items={mns || props.monitors}/> : <ErrorPage/>}
+
     </div>
   );
 }
@@ -46,7 +49,7 @@ export function getStaticPaths(context) {
         params: { pageNumber: "4" },
       },
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 export async function getStaticProps(context) {
@@ -63,7 +66,7 @@ export async function getStaticProps(context) {
   client.close();
   return {
     props: {
-      monitors: currentProducts,
+      monitors: context.params.pageNumber < 5 ? currentProducts : null,
     },
   };
 }

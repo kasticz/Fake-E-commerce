@@ -2,15 +2,22 @@ import Discounts from "../components/discounts/Discounts";
 import { MongoClient } from "mongodb";
 import Categories from "../components/categories/Categories";
 import { pass } from "./api/hello";
+import { useSelector } from "react-redux";
+import Burger from "../components/UI/mobile/Burger";
 
 
 export default function Home(props) {
+  const dimensions = useSelector((state) => state.UI.dimensions);
+  console.log(dimensions.clientWidth < 800)
+
+
   return (
     <main className="main">
       <div className="container">
         <Discounts products={props.products} />
-        <Categories />        
+        <Categories />              
       </div>
+      { dimensions.clientWidth < 770 && <Burger />}
     </main>
   );
 }

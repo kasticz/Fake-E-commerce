@@ -1,4 +1,4 @@
-@import '../../pages/variables'
+@import '../../pages/_variables'
 .nav
     width: 100%
     position: fixed
@@ -20,16 +20,23 @@
     list-style: none
     @include flexCenter
     color: $fourthColor
+    li
+        &:nth-child(n+2)
+            .navCategory
+                margin-left: 3rem
+        
 
 
-.navCategory
-    margin-left: 3rem
+.navCategory    
     font-size: 1.5rem
     cursor: pointer 
     color: $fourthColor   
     &:hover
         text-decoration: underline
         color: #8282c9
+
+        
+        
 
 
 .telephone,.email
@@ -38,9 +45,93 @@
     margin-right: 1rem
 
 .support
+    @include flexCenter
     span
         margin-right: 1rem
+    hr
+        margin: 3px 0 3px 0
+        height: 1px 
+        width: 100%
+        border: 1px solid black
+        display: none
 .telephone,.email
     &:hover
         text-decoration: underline
         color: #8282c9
+
+            
+
+@media  ( max-width: 1640px  )
+    .support
+        flex-direction: column
+        span,a
+            margin: 0
+        span,.email
+            margin-left: 0.5rem
+    .email
+        margin-left: 1rem
+
+@media  ( max-width: 1522px  )
+    .support
+        span
+            &:nth-child(2)                
+                display: none
+        .linksWrapper
+            @include flexCenter
+            flex-direction: column
+            .telephone
+                margin-top: 0.5rem
+            hr
+                display: block
+@media  ( max-width: 1200px  )
+    .navTitle
+        max-width: 250px
+        text-align: center
+    .navCategories       
+        li
+            &:nth-child(n+2)
+                .navCategory
+                    margin-left: 1rem
+@media  ( max-width: 1000px  )
+    .navTitle
+        max-width: 180px
+    .navCategory    
+        font-size: 1rem
+@media  ( max-width: 770px  )
+    .nav
+        justify-content: flex-start
+        flex-direction: column
+        align-items: flex-start
+        padding: 0.5rem 1rem
+    .navTitle
+        max-width: none
+        font-size: 2rem
+    .support
+        margin-left: 2rem
+    .navCategories   
+        display: none
+    .support
+        flex-direction: row
+        margin: 1rem 0 0 0 
+        .linksWrapper
+            margin-left: 0.5rem
+            a
+                margin: 0
+            hr
+                display: block
+            .telephone
+                margin-top: 0
+@media  ( max-width: 415px  )
+    .navTitle
+        font-size: 1.5rem
+    .support
+        flex-direction: column
+        margin: 0.5rem 0 0 0 
+        .linksWrapper
+            margin-left: 0.5rem
+            a
+                margin: 0
+            hr
+                display: block
+            .telephone
+                margin-top: 0

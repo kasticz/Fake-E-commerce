@@ -1,0 +1,108 @@
+@import '../../../pages/_variables'
+.burger
+    @include flexCenter    
+    flex-direction: column
+    position: fixed
+    top: 50px
+    right: 40px
+    transform: translateY(-50%)
+    z-index: 2000
+    padding: 0.5rem
+    height: 50px
+    span
+        height: 4px
+        width: 50px
+        background-color: black
+        transition: 0.5s all
+        &:nth-child(n+2)
+            margin-top: 0.5rem
+.burgerActive
+    span
+        height: 4px
+        width: 50px
+        background-color: black
+        transition: 0.5s all
+        &:nth-child(1)
+            transform: rotate(-45deg)
+        &:nth-child(2)
+            display: none
+        &:nth-child(3)
+            transform: rotate(45deg) translate(-3px,-3px)
+        &:nth-child(n+2)
+            margin: 0
+            
+
+.linksWrapper
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    padding: 0 1rem 3rem 0
+    z-index: 1000
+    background-color: rgb(114, 106, 111, 0.9)
+    animation: openNav 0.3s linear
+
+.categories
+    @include flexCenter
+    justify-content: space-around
+    margin-top: 1rem
+    width: 80%
+    a
+        color: white
+        font-size: 1.5rem
+        &:hover
+            text-decoration: underline
+            color: #f1dbb1
+.buttonsWrapper
+    @include flexCenter
+    margin-top: 3rem
+    justify-content: space-around
+    button
+        max-width: 45%
+        height: 50px
+        @include card
+        background-color: #fff
+        font-size: 1.5rem
+        color: black
+        &:hover
+            color: white
+            background-color: $fourthColor
+            
+@keyframes openNav
+    0%
+        width: 0%
+    50%
+        width: 50%        
+    100%
+        width: 100%
+
+@media  ( max-width: 576px  )
+    .categories
+        margin-top: 3rem
+@media  ( max-width: 500px  )
+    .buttonsWrapper
+    .categories
+        flex-direction: column
+        align-items: flex-start
+        margin-left: 2rem
+        li
+            a
+                font-size: 2rem
+            &:nth-child(n+2)
+                margin-top: 1rem
+
+
+                
+                
+
+@media  ( max-width: 460px  )
+    .burger
+        right: 10px
+@media  ( max-width: 460px  )
+    .buttonsWrapper
+        flex-direction: column
+        button
+            max-width: 90%
+            &:nth-child(2)
+                margin-top: 2rem
+                

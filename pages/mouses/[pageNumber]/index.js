@@ -5,26 +5,29 @@ import { mouseSortingActions, filter } from "../../../store/mousesSlice";
 import { pass } from "../../api/hello";
 import { MongoClient } from "mongodb";
 import { useEffect } from "react";
+import ErrorPage from "../../../components/errorPage";
 
 export default function Mouses(props) {
   const dispatch = useDispatch();
   const router = useRouter();
   const mouses = useSelector((state) => state.mouses);
 
-
-
   useEffect(() => {
-    if (!mouses) {
+    if (!mouses && props.mouses) {
       dispatch(mouseSortingActions.setUpState(props.mouses));
     }
-    dispatch(mouseSortingActions.applyDiscounts())
+    if (props.mouses) {
+      dispatch(mouseSortingActions.applyDiscounts());
+    }
   }, []);
 
   return (
     <div className="container">
-      <MousesPage
-        mouses={mouses || props.mouses}
-      />
+      {props.mouses ? (
+        <MousesPage mouses={mouses || props.mouses} />
+      ) : (
+        <ErrorPage />
+      )}
     </div>
   );
 }
@@ -45,7 +48,7 @@ export function getStaticPaths(context) {
         params: { pageNumber: "4" },
       },
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 export async function getStaticProps(context) {
@@ -62,7 +65,7 @@ export async function getStaticProps(context) {
   client.close();
   return {
     props: {
-      mouses: currentProducts,
+      mouses: context.params.pageNumber < 5 ? currentProducts : null,
     },
   };
 }

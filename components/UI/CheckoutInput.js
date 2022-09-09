@@ -15,7 +15,7 @@ export default function CheckoutInput(props) {
     setInputStatus(result[0]);
   }
   function sendInput(){
-    props.getValue(currRef.current.value)
+    props.getValue ? props.getValue(currRef.current.value) : ''
   }
   return (
     <div className={styles.wrapper}>

@@ -35,17 +35,17 @@ export default function Footer(props) {
         <div className={styles.socials}>
           <p>Мы в соцесетях</p>
           <div className={styles.icons}>
-          <Link href="/">
+          <Link href="https://vk.com">
             <a>
               <img src={vkLogo.src} alt="" />
             </a>
           </Link>
-          <Link href="/">
+          <Link href="https://ok.ru">
             <a>
               <img src={odnLogo.src} alt="" />
             </a>
           </Link>
-          <Link href="/">
+          <Link href="https://youtube.ru">
             <a>
               <img src={ytLogo.src} alt="" />
             </a>

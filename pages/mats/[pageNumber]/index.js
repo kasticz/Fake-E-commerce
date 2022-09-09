@@ -6,25 +6,25 @@ import { MongoClient } from "mongodb";
 import { useEffect } from "react";
 
 import { matsActions } from "../../../store/matsSlice";
+import ErrorPage from "../../../components/errorPage";
 
 export default function Mouses(props) {
   const dispatch = useDispatch();
   const router = useRouter();
   const mats = useSelector((state) => state.mats);
- 
+
   useEffect(() => {
-    if (!mats) {
+    if (!mats && props.mats) {
       dispatch(matsActions.setUpState(props.mats));
     }
-    dispatch(matsActions.applyDiscounts())
+    if (props.mats) {
+      dispatch(matsActions.applyDiscounts());
+    }
   }, []);
-
 
   return (
     <div className="container">
-      <MatsPage
-        items={mats || props.mats}
-      />
+      {props.mats ? <MatsPage items={mats || props.mats} /> : <ErrorPage />}
     </div>
   );
 }
@@ -45,7 +45,7 @@ export function getStaticPaths(context) {
         params: { pageNumber: "4" },
       },
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 export async function getStaticProps(context) {
@@ -62,7 +62,7 @@ export async function getStaticProps(context) {
   client.close();
   return {
     props: {
-      mats: currentProducts,
+      mats: context.params.pageNumber < 5 ? currentProducts : null,
     },
   };
 }

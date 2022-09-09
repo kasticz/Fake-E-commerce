@@ -42,8 +42,8 @@ export default function CheckoutForm(props) {
 
   function EmailValidation(input) {
     const alphabetAndSymbols =
-      'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+|"{}};>?<`~.,:[]=-/';
-    const symbols = '!@#$%^&*()_+|"{}};>?<`~.,:[]=-/';
+      'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+|"{}};>?"\"<`~.,``:[]=-/1234567890';
+    const symbols = '!@#$%^&*()_+|"{}};>?<`~.,"\"``:[]=-/';
     const dogIndex = input.indexOf("@");
     const shouldIncludeDog =
       input.includes("@") &&
@@ -64,6 +64,7 @@ export default function CheckoutForm(props) {
     let shouldBeLatin = true;
     for (let i = 0; i < input.length; i++) {
       if (!alphabetAndSymbols.includes(input[i].toLowerCase())) {
+        console.log(input[i])
         shouldBeLatin = false;
         break;
       }
@@ -89,7 +90,7 @@ export default function CheckoutForm(props) {
     }
     if (!shouldBeLatin) {
       errorMsg =
-        "Допускаются только буквы латинского алфавита и специальные символы";
+        "Допускаются только буквы латинского алфавита, цифры и специальные символы";
     }
     return [result, errorMsg];
   }
