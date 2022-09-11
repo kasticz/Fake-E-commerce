@@ -127,6 +127,8 @@
 
 .loginWrapper
     @include flexCenter
+    hr
+      display: none
     
         
 .foundProducts
@@ -134,19 +136,21 @@
     left: 0
     @include flexCenter
     flex-direction: column
+    justify-content: flex-start
     background-color: white
     min-width: 100%
     max-width: 120%
     border-bottom-left-radius: 32px
     border-bottom-right-radius: 32px
-    padding: 1rem 0.5rem
+    padding: 16px 8px
     overflow-x: hidden
     
 .foundItem
+    display: block
     width: 100%
     text-align: center
-    height: 50px
-    padding: 0.5rem
+    height: 43px
+    padding: 8px
     font-size: 1rem
     @include flexCenter
     justify-content: space-between
@@ -265,6 +269,152 @@
 @media  ( max-width: 1522px  )
     .panelWrapper
         margin-top: 6.8rem
+    .loginWrapper
+      .name
+        margin-right: 1rem
+@media  ( max-width: 1405px  )
+  .loginWrapper
+    flex-direction: column
+    hr
+      display: block
+      margin: 0
+      width: 100%
+      height: 1px
+      border: 1px solid black
+    .name
+      margin: 0
+    .Login
+      margin: 0
+    hr
+      margin: 0.3rem 0
+  .logoWrapper
+    width: 120px
+    .logo
+      width: 100%
+@media  ( max-width: 1370px  )
+  .spinner
+    transform: scale(0.7)
+    margin: 0    
+  .logoWrapper
+    width: 120px
+    position: absolute
+    left: 10px
+    .logo
+      width: 100%
+  .search
+      margin-left: 200px
+
+@media  ( max-width: 1200px  )
+  .loginWrapper
+    margin-right: 1rem
+@media  ( max-width: 1100px  )
+  .spinnerWrapper
+    left: -80px
+  .search
+    input
+      max-width: 230px
+    
+@media  ( max-width: 1000px  )
+  .loginWrapper
+    margin-right: 1rem    
+  .cart
+    width: auto
+    padding: 0.5rem 0.5rem
+    .cartLogo
+      height: 30px
+  .Register,.Login,.name,.CartLink,.searchButton,.cart
+    font-size: 1rem
+  .name
+    span
+      font-size: 1.5rem
+  .search
+    input
+      font-size: 1rem
+  .searchButton
+    width: auto
+    
+@media  ( max-width: 900px  )
+  .search
+    margin-left: 170px
+@media  ( max-width: 800px  )
+  .search
+    margin-left: 140px
+  .logoWrapper
+    width: 80px
 @media  ( max-width: 770px  )
-    .panelWrapper
-      margin-top: 7.3rem
+  .searchButton
+    margin-right: 0.5rem
+    padding: 0.5rem
+    span
+      display: none
+    img
+      margin: 0
+  .spinner
+    transform: scale(0.5)
+  .panelWrapper
+    padding: 0.5rem
+    input
+      height: 30px 
+  .panelWrapper
+    margin-top: 7.3rem
+    height: auto
+  .loginWrapper
+    hr,.Login,.Register
+      display: none
+@media  ( max-width: 700px )
+  .search
+    input
+      width: 230px
+  .spinnerWrapper
+    left: -65px
+  .loginWrapper
+    .name
+      display: none
+@media  ( max-width: 576px )
+  .search
+    input
+      width: 150px
+.foundProducts
+    max-width: none 
+    width: 150%  
+    left: -50px
+.foundItem
+    width: 100%
+// .foundTitle
+//     margin-right: 3rem
+.foundPrice
+    font-weight: 700
+@media  ( max-width: 500px )
+  .logoWrapper
+    width: 50px
+  .search
+    margin-left: 100px
+  .spinner
+    transform: scale(0.3)
+  .panelWrapper
+    width: 100vw
+  .foundProducts
+    width: 150%
+    .foundPrice
+      width: 57px
+
+@media  ( max-width: 440px )
+  .searchButton
+    margin: 0 0 0 0.5rem
+  .search
+    input
+      width: 100px
+    img
+      height: auto
+  .cart
+    height: auto
+    .cartLogo
+      height: 15px
+  .foundProducts
+    width: 200%
+@media  ( max-width: 370px )
+  .cart
+    .CartLink
+      display: none
+  .foundProducts
+    left: -90px

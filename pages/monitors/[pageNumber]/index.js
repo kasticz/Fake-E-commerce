@@ -14,19 +14,20 @@ export default function Mouses(props) {
   const mns = useSelector((state) => state.monitors);
  
   useEffect(() => {
-    if (!mns && props.mns) {
+    if (!mns && props.monitors) {
       dispatch(monitorsActions.setUpState(props.monitors));
     }
-    if(props.mns){
+    if(props.monitors){
       dispatch(monitorsActions.applyDiscounts())
     }
 
   }, []);
+  
 
 
   return (
     <div className="container">
-      {props.mns ? <MonitorsPage items={mns || props.monitors}/> : <ErrorPage/>}
+      {props.monitors ? <MonitorsPage items={mns || props.monitors}/> : <ErrorPage/>}
 
     </div>
   );

@@ -7,7 +7,6 @@ import { MongoClient } from "mongodb";
 import findAnalogs from "../../store/findAnalogs";
 import ErrorPage from '../../components/ErrorPage'
 export default function ProductIds(props) {
-  console.log(props.product)
   return (
     <Fragment>
       {props.product && (

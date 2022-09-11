@@ -68,8 +68,8 @@
     position: relative
 .addedToCartMsg
     position: absolute
-    bottom: -60px
-    right: -15px
+    bottom: 60px
+    right: -30px
     height: 40px
     width: 200px
     background-color: #f6f6f6
@@ -101,3 +101,88 @@
         -ms-transform: rotateY(-360deg)
         transform: rotateY(-360deg)
         
+@media ( max-width: 1300px )
+    .discountItem
+        justify-content: space-between
+        &:nth-child(n+2)
+            margin-left: 50px     
+    .discountItem
+        width: 760px
+    .productImageWrapper
+        height: auto
+        max-height: 100%
+        width: 44%   
+        cursor: pointer
+        img
+            width: 300px   
+    .discountMsg,.prices
+        width: 28%
+
+    .linksButtons
+        width: auto
+        position: absolute
+        bottom: -2rem
+        left: 25%
+        @include flexCenter
+        justify-content: space-between
+    .toProductPage
+        margin-left: 1.5rem
+@media ( max-width: 1000px )
+    .discountItem
+        width: 680px
+@media ( max-width: 769px )
+    .discountItem
+        width: 100vw
+        &:nth-child(n+2)
+            margin-left: 0
+    .linksButtons
+        left: 35%
+    .discountMsg,.oldPrice
+        font-size: 1rem
+    .percentDiscount,.newPrice
+        font-size: 1.5rem
+    .productImageWrapper
+        @include flexCenter        
+        img
+            width: 200px
+@media ( max-width: 650px )
+    .linksButtons
+        left: 35%
+    .toCart,.toProductPage
+        height: 40px
+    .hotDiscounts
+        font-size: 1.5rem
+        display: block
+        width: 100%
+@media ( max-width: 500px )
+    .productImageWrapper     
+        justify-content: flex-end 
+        img
+            width: 150px
+            margin-right: 1rem
+    .discountMsg
+        width: 30%
+    .prices
+        width: auto
+    .productImageWrapper
+        max-width: 45%
+@media ( max-width: 500px )
+    .percentDiscount,.newPrice
+        font-size: 1.2rem
+    .productImageWrapper     
+        justify-content: flex-end 
+        img
+            width: 120px
+            margin-right: 0.5rem
+@media ( max-width: 350px )
+    .toProductPage
+        margin-left: 1rem
+    
+
+        
+
+
+
+
+
+

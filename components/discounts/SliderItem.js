@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import getImages from "../../store/getImages";
 import { cartActions } from "../../store/cartSlice";
 import Link from "next/link";
 import styles from "./SliderItem.module.sass";
 
-
 export default function SliderItem(props) {
   const dispatch = useDispatch();
-  const p = String(props.item.price)
-  const prc = String(Math.round(props.item.price * ((100-props.item.discount) / 100)))
-  const oldPrice = p.length > 3 ? `${p.slice(0,-3)} ${p.slice(-3)}` : p
-  const price = prc.length > 3 ? `${prc.slice(0,-3)} ${prc.slice(-3)}` : prc
+  const clientWidth = useSelector((state) => state.UI.dimensions.clientWidth);
+  const p = String(props.item.price);
+  const prc = String(
+    Math.round(props.item.price * ((100 - props.item.discount) / 100))
+  );
+  const oldPrice = p.length > 3 ? `${p.slice(0, -3)} ${p.slice(-3)}` : p;
+  const price = prc.length > 3 ? `${prc.slice(0, -3)} ${prc.slice(-3)}` : prc;
   const dsc = props.item.discount;
   const [image, setImage] = useState();
   const [animation, setAnimation] = useState(true);
   const [addedToCart, setAddedToCart] = useState();
-  
 
   function addToCart() {
-
     dispatch(
       cartActions.addToCart({
         price: Math.round(
@@ -77,9 +77,7 @@ export default function SliderItem(props) {
         >
           -{dsc}%
         </p>
-        <p className={styles.newPrice}>
-          {price} ₽
-        </p>
+        <p className={styles.newPrice}>{price} ₽</p>
       </div>
       <Link
         href={{

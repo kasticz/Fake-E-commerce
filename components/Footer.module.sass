@@ -5,20 +5,20 @@
     background-color: #333
     margin-top: 3rem
     padding: 1rem
-.footerSection,.siteTitle,.subscribe,.privacy
+.footerSection,.siteTitle,.subscribe,.privacy,.policyPrivacy
     color: white
 .footerWrapper
     width: 100%
     height: 100%
     @include flexCenter
     justify-content: space-around
-.siteTitle
+.siteTitle,.policyPrivacy
     &:hover
         color: $mainColor
 .subscribe
-    flexCenter
+    @include flexCenter
+    align-items: flex-start
     flex-direction: column
-    margin-top: 1rem
     button,input
         font-family: 'Roboto'
     button   
@@ -60,10 +60,93 @@
         font-size: 1.5rem
         margin: 0
         margin-bottom: 0.5rem
-
+.mobileWrapper
+    width: 800px
+    @include flexCenter
+    justify-content: space-around
 
 
     
 
 .checkboxWrapper
     margin-top: 0.5rem
+@media  ( max-width: 1450px )
+    .mobileWrapper
+        width: 500px
+@media  ( max-width: 1150px )
+    .mobileWrapper
+        flex-direction: column
+        width: auto
+        .policyPrivacy
+            margin-top: 1rem
+@media  ( max-width: 850px )
+    .mobileWrapper
+    .socials p,.subscribe button
+        font-size: 1rem
+    .socials
+        img
+            height: 30px
+    .subscribe
+        .notificationMsg
+            margin-bottom: 0.5rem
+        input
+            &[type="email"]
+                 font-size: 1rem
+        button
+            width: auto
+            height: 30px
+@media  ( max-width: 750px )
+    .mobileWrapper
+        max-width: 150px
+    .socials 
+        width: auto
+        p
+            display: none
+        a
+            &:nth-child(n+2)
+                img            
+                    margin-left: 0
+                    margin-top: 0.5rem
+    .icons
+        @include flexCenter
+        flex-direction: column
+        img
+            margin: 0   
+            height: 20px
+@media  ( max-width: 520px )
+    .subscribe
+        position: relative
+        .checkboxWrapper
+            @include flexCenter            
+            label
+                margin-left: 0.5rem
+                display: inline-block
+                line-height: 14px
+                width: 120px
+        .notificationMsg
+            position: absolute
+            top: -10px
+            left: -50px
+            width: 150%
+        .inputWrapper
+            margin-top: 1rem        
+    .inputWrapper
+        @include flexCenter
+        flex-direction: column
+        align-items: flex-start
+        button
+            margin: 0.5rem 0 0 0 
+    .socials
+        .icons
+            img
+                height: 30px
+@media  ( max-width: 520px )
+    .socials
+        .icons
+            img
+                height: 20px
+    .subscribe
+        input
+            &[type="email"]
+                 width: 100px
+

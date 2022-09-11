@@ -8,14 +8,16 @@ export default function Footer(props) {
   return (
     <footer className={styles.footerSection}>
       <div className={styles.footerWrapper}>
+        <div className={styles.mobileWrapper}>
         <Link href={"/"}>
           <a className={styles.siteTitle}> Fake E-commerce site, 2012-2022</a>
         </Link>
         <Link href={"/"}>
-          <a className={styles.siteTitle}> Политика конфиденциальности</a>
+          <a className={styles.policyPrivacy}> Политика конфиденциальности</a>
         </Link>
+        </div>
         <form className={styles.subscribe}>
-          <div> Уведомления об акциях и новостях</div>
+          <div className={styles.notificationMsg}> Уведомления об акциях и новостях</div>
           <div className={styles.inputWrapper}>
             <input required type="email" />
             <button> Подписаться</button>

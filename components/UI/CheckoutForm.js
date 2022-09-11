@@ -64,7 +64,6 @@ export default function CheckoutForm(props) {
     let shouldBeLatin = true;
     for (let i = 0; i < input.length; i++) {
       if (!alphabetAndSymbols.includes(input[i].toLowerCase())) {
-        console.log(input[i])
         shouldBeLatin = false;
         break;
       }

@@ -33,6 +33,7 @@ export default function SearchPanel(props) {
   const [searchInput, setSearchInput] = useState("");
   const [foundProducts, setFoundProducts] = useState(null);
   const [spinner, setSpinner] = useState(false);
+  const clientWidth = useSelector(state=>state.UI.dimensions.clientWidth)
   const totalAmount =
     cart && cart.length > 0
       ? cart.reduce((acc, item) => {
@@ -122,6 +123,7 @@ export default function SearchPanel(props) {
   }
 
   useEffect(() => {
+    if(clientWidth > 767){
     let timer;
     let timerSpinner;
 
@@ -132,6 +134,7 @@ export default function SearchPanel(props) {
       return retrievedProducts;
     }
     if (searchInput) {
+  
       timerSpinner = setTimeout(() => {
         setSpinner(true);
       }, 1000);
@@ -146,7 +149,24 @@ export default function SearchPanel(props) {
       clearTimeout(timer);
       clearTimeout(timerSpinner);
     };
+    }
+    
   }, [searchInput]);
+
+  async function startSearch(e){
+    e.preventDefault()
+    if (searchInput) {
+      setSpinner(true)
+       setTimeout(async() => {
+        const retrievedProducts = await findProducts(searchInput);
+        setSpinner(false);
+        setFoundProducts(retrievedProducts);
+      }, 100);
+    }
+  }
+
+  const maxHeight = clientWidth > 768 ? 500 : 300 
+
 
   const foundProductsComp = foundProducts
     ? foundProducts.map((item) => {
@@ -160,7 +180,7 @@ export default function SearchPanel(props) {
           : "";
         return item.id ? (
           <Link key={Math.random()} href={{ pathname: `/${item.id}` }}>
-            <a className={styles.foundItem}>
+            <a  className={styles.foundItem}>
               <div className={styles.foundTitle}>{item.title}</div>
               {price && <div className={styles.foundPrice}>{price}</div>}
             </a>
@@ -181,13 +201,14 @@ export default function SearchPanel(props) {
             <img src={logo.src} alt="" className={styles.logo} />
           </a>
         </Link>
-        <form
-          onBlur={(e) => {
-            e.preventDefault();
-            setTimeout(() => {
-              setFoundProducts(null);
-            }, 1000);
-          }}
+        <form 
+          // onBlur={(e) => {
+          //   e.preventDefault(); 
+          //     setTimeout(() => {
+          //       setFoundProducts(null);              
+          //    }, 200);      
+
+          // }}
           className={styles.search}
         >
           {spinner && (
@@ -212,26 +233,26 @@ export default function SearchPanel(props) {
             ref={searchRef}
             type="text"
           />
-          <button className={styles.searchButton}>
-            Найти <img className={styles.searchIcon} src={search.src} alt="" />
+          <button onClick={startSearch} className={styles.searchButton}>
+            <span>Найти</span>  <img className={styles.searchIcon} src={search.src} alt="" />
           </button>
-          <div
+          <div 
             style={{
               bottom:
-                foundProducts && foundProducts.length * 50 > 500
-                  ? `-532px`
+                foundProducts && foundProducts.length * 48 > maxHeight
+                  ? `${-maxHeight - 32}px` 
                   : foundProducts
-                  ? `-${foundProducts.length * 50 + 32}px`
+                  ? `-${foundProducts.length * 48 + 32}px`
                   : 0,
               height:
-                foundProducts && foundProducts.length * 50 > 500
-                  ? `532px`
+                foundProducts && foundProducts.length * 47 > maxHeight
+                  ? `${maxHeight + 32}px`
                   : foundProducts
-                  ? `${foundProducts.length * 50 + 32}px`
+                  ? `${foundProducts.length * 48 + 32}px`
                   : 0,
               display: foundProducts ? "flex" : "none",
               overflowY:
-                foundProducts && foundProducts.length * 50 > 500
+                foundProducts && foundProducts.length * 47 > 500
                   ? "scroll"
                   : "hidden",
             }}
@@ -251,6 +272,7 @@ export default function SearchPanel(props) {
               >
                 Войти в аккаунт
               </button>
+              <hr />
               <button
                 onClick={() => {
                   dispatch(UIActions.toggleModal("register"));
@@ -265,6 +287,7 @@ export default function SearchPanel(props) {
               <span className={styles.name}>
                 Здравствуйте, <span>{login}</span>
               </span>
+              <hr />
               <button onClick={removeCookies} className={styles.Register}>
                 Выйти из аккаунта
               </button>

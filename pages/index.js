@@ -8,7 +8,6 @@ import Burger from "../components/UI/mobile/Burger";
 
 export default function Home(props) {
   const dimensions = useSelector((state) => state.UI.dimensions);
-  console.log(dimensions.clientWidth < 800)
 
 
   return (

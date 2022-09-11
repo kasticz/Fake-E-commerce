@@ -87,3 +87,15 @@ export function debounce(fn, ms) {
     }
   };
 }
+// export function mobileSlide(xCoord,yCoord,type){
+
+// }
+export function mobileSlideStart(xCoord,yCoord){
+  console.log(xCoord,yCoord)
+}
+export function mobileSlide(xCoord,yCoord){
+  console.log(xCoord,yCoord)
+}
+export function mobileSlideEnd(xCoord,yCoord){
+  console.log(xCoord,yCoord)
+}
