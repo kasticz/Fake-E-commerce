@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Categories(props) {
   return (
-    <section className={styles.categoriesSeciton}>
+    <section className={styles.categoriesSection}>
       <h2 className={styles.title}>Категории товаров</h2>
       <ul className={styles.categories}>
         <li className={styles.category}>

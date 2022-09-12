@@ -10,11 +10,11 @@
     padding: 1rem
     border-radius: 16px
     background-color: #fff
+    position: relative
         
     
 .itemImage
     max-width: 200px
-    // height: 200px
 .itemTitle,.itemPrice,.buyButton,.pageButton
     font-size: 1.5rem
 .itemRating
@@ -81,3 +81,76 @@
     @include flexCenter
     border-radius: 16px
     
+
+@media  ( max-width: 1522px )
+    .item
+        position: relative
+    .buttons
+        width: auto
+        position: absolute
+        bottom: 20px
+        right: 20px
+        .pageButton,.buyButton
+            font-size: 1.3rem
+            height: 50px
+        .pageButton
+            width: auto
+    .itemDescription
+        padding: 1rem 0.5rem
+    .itemUI
+        width: auto
+@media  ( max-width: 1200px )
+    .buttons
+        .pageButton
+            width: 200px
+@media  ( max-width: 1000px )
+    .item
+        .itemImage
+            max-width: 150px
+        .itemUI
+            padding: 0
+        .itemDescription,.itemImage
+            margin-bottom: 2rem
+        .itemTitle
+            font-size: 1.2rem
+        .oldPrice
+            font-size: 1.3rem
+        .newPrice
+            font-size: 1.5rem
+    .buttons
+        .pageButton
+            width: auto
+@media  ( max-width: 770px )
+    .item
+        margin: 0 auto
+        width: 95%
+@media  ( max-width: 450px )
+    .pageButton
+        max-width: 150px
+    .buyButton
+        width: 100px
+    .prices
+        width: 100%
+        position: absolute
+        top: 0
+        left: 50%
+        transform: translateX(-50%)
+        flex-direction: row
+        justify-content: center
+        margin-top: 2rem
+        .newPrice
+            margin-left: 2rem
+            font-size: 2rem
+        .oldPrice
+            font-size: 1.5rem
+    .itemDescription
+        width: auto
+@media  ( max-width: 350px )
+    .item
+        .itemImage
+            max-width: 120px
+    .buttons
+        .pageButton,.buyButton
+             font-size: 1rem
+    .pageButton
+        max-width: 130px

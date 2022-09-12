@@ -8,6 +8,7 @@ import {CookiesProvider} from 'react-cookie'
 import Footer from '../components/Footer'
 import { useDispatch } from "react-redux";
 import { UIActions } from "../store/UISlice";
+import Burger from "../components/UI/mobile/Burger";
 
 
 
@@ -22,6 +23,7 @@ function MyApp({ Component, pageProps }) {
       <Nav/>
       <SearchPanel/>
         <Component {...pageProps} />
+        <Burger/>
         <Footer/>
     </Provider>
     </CookiesProvider>

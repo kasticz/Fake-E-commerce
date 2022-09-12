@@ -1,10 +1,13 @@
 import CategoryItem from "./CategoryItem";
 import { useRouter } from "next/router";
 import PagesButtons from "../UI/PagesButtons";
+import React from "react";
 import styles from "./CategoryItems.module.sass";
 
-export default function CategoryItems(props) {
+export  function CategoryItems(props) {
   const router = useRouter();
+
+
 
 
 
@@ -40,3 +43,5 @@ export default function CategoryItems(props) {
     </section>
   );
 }
+
+export default  React.memo(CategoryItems)

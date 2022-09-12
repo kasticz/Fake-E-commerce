@@ -6,6 +6,7 @@
     padding: 5px 2rem 
     cursor: pointer
     z-index: 50
+    height: 40px
     margin: 0.5rem 0
     text-align: center
     span
@@ -47,3 +48,49 @@
 .preview
     display: inline
     color: gray
+@media  ( max-width: 1522px )
+    .input
+        margin: 8px 0
+@media  ( max-width: 1200px )
+    .input
+        height: 30px
+        label
+            font-size: 1.3rem
+            max-height: 30px
+@media  ( max-width: 1000px )
+    .input
+        height: 50px
+        padding: 5px 1rem
+        @include flexCenter
+        label
+            max-height: none      
+            margin-left: 2rem      
+        span
+            width: 20px
+            height: 20px
+@media  ( max-width: 770px )
+    .input
+        font-size: 1.5rem   
+        padding: 5px 2rem 
+        height: 40px       
+        span           
+            width: 30px
+            height: 30px
+            left: 1rem
+            &::after
+                content: ''
+                background: url("../../assets/images/UI/checkmark.png") center center/cover no-repeat 
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                opacity: 0
+                transition: 0.3s all ease-out         
+        label
+            margin-left: 1.5rem
+            font-size: 1.5rem
+
+
+
+        

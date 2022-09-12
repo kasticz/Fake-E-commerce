@@ -202,13 +202,13 @@ export default function SearchPanel(props) {
           </a>
         </Link>
         <form 
-          // onBlur={(e) => {
-          //   e.preventDefault(); 
-          //     setTimeout(() => {
-          //       setFoundProducts(null);              
-          //    }, 200);      
+          onBlur={(e) => {
+            e.preventDefault(); 
+              setTimeout(() => {
+                setFoundProducts(null);              
+             }, 200);      
 
-          // }}
+          }}
           className={styles.search}
         >
           {spinner && (

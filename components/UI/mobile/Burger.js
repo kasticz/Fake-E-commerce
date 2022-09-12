@@ -11,7 +11,7 @@ export default function Burger(props) {
   const login = useSelector((state) => state.UI.login);
   const mobileNavActive = useSelector((state) => state.UI.mobileNavActive);
   const [cookie, setCookie, removeCookie] = useCookies(["user"]);
-  const [cookies] = useCookies()
+  const [cookies] = useCookies();
   const [isLogged, setIsLogged] = useState(false);
   const dispatch = useDispatch();
 
@@ -22,9 +22,9 @@ export default function Burger(props) {
   }
   useEffect(() => {
     setIsLogged(!!cookies.accessToken);
-  },[cookies]);
+  }, [cookies]);
 
-  return (
+  return clientWidth < 770 ? (
     <Fragment>
       <button
         onClick={() => {
@@ -90,11 +90,15 @@ export default function Burger(props) {
             )}
 
             {clientWidth < 771 && isLogged && (
-              <button className={styles.logout} onClick={removeCookies}>Выйти из аккаунта</button>
+              <button className={styles.logout} onClick={removeCookies}>
+                Выйти из аккаунта
+              </button>
             )}
           </div>
         </div>
       )}
     </Fragment>
-  );
+  ) : (
+    ""
+  );  
 }

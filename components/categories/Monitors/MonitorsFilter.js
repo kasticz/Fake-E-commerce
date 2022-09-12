@@ -31,6 +31,7 @@ export default function KeyboardFilter(props) {
       },
     });
     dispatch(filterMns({ inputs }));
+    if(props.closeMobileFilter) props.closeMobileFilter()
   }
 
   return (
@@ -214,6 +215,7 @@ export default function KeyboardFilter(props) {
           Сбросить фильтр
         </button>
       </form>
+      <button onClick={props.closeMobileFilter} className={styles.mobileClose}>X</button>
     </div>
   );
 }

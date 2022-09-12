@@ -41,3 +41,66 @@
         opacity: 0
 
 
+@media  ( max-width: 1200px )
+    .priceButton
+        font-size: 1.3rem
+        padding-left: 3.5rem
+        &::before
+            content:''
+            @include absoluteYcenter 
+            left: 10px
+            height: 20px
+            width: 30px
+            background: url('../../assets/images/UI/FilterArrowDown.svg') center center/cover no-repeat
+            opacity: 1
+        &::after        
+            content:''
+            @include absoluteYcenter    
+            height: 20px
+            width: 30px
+            left: 10px
+            background: url('../../assets/images/UI/FilterArrowUp.svg') center center/cover no-repeat
+            opacity: 0
+    .expanded
+        &::after
+            opacity: 1
+        &::before
+            opacity: 0            
+    .priceFilter
+        &:nth-child(n+2)
+            margin-top: 0.5rem    
+@media  ( max-width: 1200px )
+    .priceButton
+        font-size: 1.5rem
+        padding-left: 3.5rem
+ 
+
+@media  ( max-width: 770px )
+    .priceFilter
+        height: 60px
+    .priceButton
+        height: 60px
+        font-size: 1.5rem
+        padding-left: 3.5rem
+    .priceButton       
+        &::before
+            content:''
+            @include absoluteYcenter 
+            left: 10px
+            height: 30px
+            width: 40px
+            background: url('../../assets/images/UI/FilterArrowDown.svg') center center/cover no-repeat
+            opacity: 1
+        &::after        
+            content:''
+            @include absoluteYcenter    
+            height: 30px
+            width: 40px
+            left: 10px
+            background: url('../../assets/images/UI/FilterArrowUp.svg') center center/cover no-repeat
+            opacity: 0
+    .expanded
+        &::after
+            opacity: 1
+        &::before
+            opacity: 0

@@ -31,6 +31,7 @@ export default function MatsFilter(props) {
       },
     });
     dispatch(filterMats({ inputs }));
+    if(props.closeMobileFilter) props.closeMobileFilter()
   }
 
   return (
@@ -179,6 +180,7 @@ export default function MatsFilter(props) {
           Сбросить фильтр
         </button>
       </form>
+      <button onClick={props.closeMobileFilter} className={styles.mobileClose}>X</button>
     </div>
   );
 }

@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import styles from "./MousesFilter.module.sass";
 
 export default function FilterPanel(props) {
+  const clientWidth = useSelector(state=>state.UI.dimensions.clientWidth)
+  console.log(!props.mobileStatus || clientWidth > 770)
   
   const productType = 'mouses'
   const router = useRouter();
@@ -25,6 +27,7 @@ export default function FilterPanel(props) {
   }
   function changeProducts(e) {
     e.preventDefault();
+    
     router.replace({
       pathname: router.pathname,
       query: {
@@ -32,10 +35,12 @@ export default function FilterPanel(props) {
       },
     });   
     dispatch(filterMouses({ inputs }));
+    if(props.closeMobileFilter) props.closeMobileFilter()
   }
 
+
   return (
-    <div className={styles.filterPanel}>
+    <div style={{display: props.mobileStatus || clientWidth > 770 ? 'flex' : 'none'}} className={styles.filterPanel}>
       <form onSubmit={changeProducts} className={styles.filterForm}>
         <CheckBoxInput
           sortType="rating"
@@ -175,6 +180,7 @@ export default function FilterPanel(props) {
           Сбросить фильтр
         </button>
       </form>
+      <button onClick={props.closeMobileFilter} className={styles.mobileClose}>X</button>
     </div>
   );
 }

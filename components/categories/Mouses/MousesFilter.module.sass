@@ -50,3 +50,43 @@
     &:hover,&:active
         background-color: $fourthColor
         color: white
+.mobileClose
+    display: none
+
+@media  ( max-width: 1522px )
+    .filterPanel
+        width: 50%
+        max-width: 350px
+@media  ( max-width: 1200px )
+    .filterPanel
+        width: 330px
+@media  ( max-width: 1000px )
+    .filterPanel
+        margin-left: 1rem
+        width: 260px
+    .applyFilter,.dropFilter
+        font-size: 1.3rem
+@media  ( max-width: 770px )
+    .filterPanel
+        position: absolute
+        left: auto
+        top: 0
+        max-width: none
+        width: 95vw
+        z-index: 3000
+        margin: 0 
+        background-color: #fff
+        form
+            width: 100%           
+    .applyFilter,.dropFilter
+        font-size: 1.5rem
+    .mobileClose
+        display: block
+        font-size: 2rem
+        position: absolute
+        top: 5px
+        right: 10px
+        display: block
+        width: 30px
+        text-align: center
+        cursor: pointer
