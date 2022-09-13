@@ -25,3 +25,39 @@
 .productSubTitle
     font-size: 1.5rem
     font-weight: 400
+
+
+@media  ( max-width: 1522px )
+    .productMain
+        margin-top: 14rem
+@media  ( max-width: 770px )
+    .productMainTitle
+        margin-left: 2rem
+        font-size: 1.5rem
+    .productWindow
+        border-left: none
+        border-right: none
+        padding: 14px
+        flex-direction: column
+    .productUI
+        width: 100%
+        .mobileWrapper
+            @include flexCenter
+            width: 100%
+            margin-top: 1rem
+        .productSubTitle
+            font-size: 1rem
+        .subtitleWrapper
+            width: 35%
+@media  ( max-width: 580px )
+    .productUI
+        .mobileWrapper
+            flex-direction: column
+        .subtitleWrapper
+            @include flexCenter
+            flex-direction: column
+            width: 100%
+            margin: 1rem 0
+
+
+        

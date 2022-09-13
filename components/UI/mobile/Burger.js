@@ -50,22 +50,54 @@ export default function Burger(props) {
           <ul className={styles.categories}>
             <li>
               <Link href={"/mouses/1"}>
-                <a>Мыши</a>
+                <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      dispatch(UIActions.toggleMobileNav());
+                    }, 100);
+                  }}
+                >
+                  Мыши
+                </a>
               </Link>
             </li>
             <li>
               <Link href={"/keyboards/1"}>
-                <a>Клавиатуры</a>
+                <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      dispatch(UIActions.toggleMobileNav());
+                    }, 100);
+                  }}
+                >
+                  Клавиатуры
+                </a>
               </Link>
             </li>
             <li>
               <Link href={"/monitors/1"}>
-                <a>Мониторы</a>
+                <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      dispatch(UIActions.toggleMobileNav());
+                    }, 100);
+                  }}
+                >
+                  Мониторы
+                </a>
               </Link>
             </li>
             <li>
               <Link href={"/mats/1"}>
-                <a>Коврики</a>
+                <a
+                  onClick={() => {
+                    setTimeout(() => {
+                      dispatch(UIActions.toggleMobileNav());
+                    }, 100);
+                  }}
+                >
+                  Коврики
+                </a>
               </Link>
             </li>
           </ul>
@@ -75,6 +107,7 @@ export default function Burger(props) {
                 <button
                   onClick={() => {
                     dispatch(UIActions.toggleModal("login"));
+                    dispatch(UIActions.toggleMobileNav());
                   }}
                 >
                   Войти в аккаунт
@@ -82,6 +115,7 @@ export default function Burger(props) {
                 <button
                   onClick={() => {
                     dispatch(UIActions.toggleModal("register"));
+                    dispatch(UIActions.toggleMobileNav());
                   }}
                 >
                   Зарегистрироваться
@@ -100,5 +134,5 @@ export default function Burger(props) {
     </Fragment>
   ) : (
     ""
-  );  
+  );
 }

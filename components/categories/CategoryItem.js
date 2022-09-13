@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import getImages from "../../store/getImages";
 import { cartActions } from "../../store/cartSlice";  
-import {useDispatch} from 'react-redux'
+import cartIcon from '../../assets/images/cartLogo.svg'
+import {useDispatch, useSelector} from 'react-redux'
 export default function CategoryItem(props) {
 
   const [addedToCart,setAddedToCart] = useState()
+  const clientWidth = useSelector(state=> state.UI.dimensions.clientWidth)
 
   const dispatch = useDispatch()
   const dsc = props.item.discount;
@@ -77,7 +79,8 @@ export default function CategoryItem(props) {
             </a>
           </Link>
           <button onClick={addToCart} className={styles.buyButton}>Купить</button>
-          {addedToCart && <p className={styles.addedToCartMsg}>Добавлено в корзину</p>}
+          {addedToCart && clientWidth > 450 &&  <p className={styles.addedToCartMsg}>Добавлено в корзину</p>}
+          {addedToCart && clientWidth <= 450  &&  <p className={styles.addedToCartMsg}><img src={cartIcon.src} alt="" /> +1</p>}
         </div>
       </div>
     </div>

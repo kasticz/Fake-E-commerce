@@ -32,4 +32,15 @@
     @include flexCenter
     padding: 1rem 2rem
     
+@media  ( max-width: 1300px )
+    .modalContentWrapper
+        @include flexCenter
+        flex-direction: column
+@media  ( max-width: 650px )
+    .modalContentWrapper
+        min-width: auto
+        width: 400px
+@media  ( max-width: 420px )
+    .modalContentWrapper
+        width: 310px
     

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 export default function ProductImages(props) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const clientWidth = useSelector(state=>state.UI.dimensions.clientWidth)
   const modalStatus = useSelector((state) => state.UI.modalActive);
   const [mainImgSrc, setMainImgSrc] = useState();
   const [images, setImages] = useState();
@@ -32,7 +33,9 @@ export default function ProductImages(props) {
       <div className={styles.productImages}>
         <div
           onClick={() => {
-            dispatch(UIActions.toggleModal('bigImage'));
+            if(clientWidth > 770){
+              dispatch(UIActions.toggleModal('bigImage'))
+            }
           }}
           className={styles.mainImgWrapper}
         >

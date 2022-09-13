@@ -38,7 +38,8 @@ export default function Discounts(props) {
 
   useEffect(() => {
     setIdleSlide(setTimeout(() => {
-      slideLeft(window.innerWidth);
+      const slideLength = window.innerWidth > 1300 ? 1212 : window.innerWidth > 1000 ? 810 : window.innerWidth >= 768 ? 730 : window.innerWidth
+      slideLeft(slideLength);
     }, 3000))
     return () => {
       clearTimeout(idleSlide);

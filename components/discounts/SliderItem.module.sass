@@ -68,7 +68,7 @@
     position: relative
 .addedToCartMsg
     position: absolute
-    bottom: 60px
+    bottom: 48px
     right: -30px
     height: 40px
     width: 200px
@@ -154,6 +154,12 @@
         font-size: 1.5rem
         display: block
         width: 100%
+    .addedToCartMsg
+        bottom: 32px
+        height: 30px
+        width: auto
+        padding: 0.5rem
+        right: 0
 @media ( max-width: 500px )
     .productImageWrapper     
         justify-content: flex-end 
@@ -166,6 +172,13 @@
         width: auto
     .productImageWrapper
         max-width: 45%
+    .addedToCartMsg
+        left: 50%
+        transform: translate(-50%)
+        height: 22px
+        @include flexCenter
+        img
+            max-height: 100%
 @media ( max-width: 500px )
     .percentDiscount,.newPrice
         font-size: 1.2rem
@@ -175,6 +188,8 @@
             width: 120px
             margin-right: 0.5rem
 @media ( max-width: 350px )
+    .linksButtons
+        bottom: -2.5rem
     .toProductPage
         margin-left: 1rem
     

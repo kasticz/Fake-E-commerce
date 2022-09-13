@@ -1,28 +1,31 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../../store/cartSlice";
+import cartIcon from "../../../../assets/images/cartLogo.svg";
 
 import styles from "./ProductPrice.module.sass";
 
 export default function ProductPrice(props) {
   const dispatch = useDispatch();
   const amountRef = useRef();
-  const itemInCart = useSelector(state=> state.cart ? state.cart.find(item=>item.id === props.id) : {})
+  const itemInCart = useSelector((state) =>
+    state.cart ? state.cart.find((item) => item.id === props.id) : {}
+  );
+  const clientWidth = useSelector((state) => state.UI.dimensions.clientWidth);
   const dsc = props.discount;
   const price = String(props.price);
-  const newPrice = Math.round(props.price * ((100 - dsc) / 100));
-
-  
+  const newPrice = String(Math.round(props.price * ((100 - dsc) / 100)));
 
   const [addedToCart, setAddedToCart] = useState();
 
   const [inputMessage, setInputMessage] = useState();
 
-
   function addToCart(e) {
     e.preventDefault();
-    if(itemInCart && itemInCart.amount > 19){
-      setInputMessage('У Вас уже максимально допустимое количество этого товара в корзине')
+    if (itemInCart && itemInCart.amount > 19) {
+      setInputMessage(
+        "У Вас уже максимально допустимое количество этого товара в корзине"
+      );
       return;
     }
     dispatch(
@@ -31,10 +34,10 @@ export default function ProductPrice(props) {
         title: props.title,
         id: props.id,
         image: props.image,
-        amount: amountRef.current.value,
+        amount: +amountRef.current.value,
       })
     );
-    amountRef.current.value = 1;
+    // amountRef.current.value = 1;
     setAddedToCart(true);
     setTimeout(() => {
       setAddedToCart(false);
@@ -42,7 +45,7 @@ export default function ProductPrice(props) {
   }
 
   function checkAmount() {
-    setInputMessage(false)
+    setInputMessage(false);
     if (amountRef.current.value > 20) {
       setInputMessage("Количество товара не может превышать 20");
       amountRef.current.value = 20;
@@ -53,7 +56,10 @@ export default function ProductPrice(props) {
     }
   }
   return (
-    <div onBlur={()=> inputMessage ? setInputMessage(false): ``} className={styles.productBuy}>
+    <div
+      onBlur={() => (inputMessage ? setInputMessage(false) : ``)}
+      className={styles.productBuy}
+    >
       <div className={styles.prices}>
         {dsc && (
           <div className={styles.oldPrice}>
@@ -72,7 +78,9 @@ export default function ProductPrice(props) {
       </div>
       <form onSubmit={addToCart} className={styles.addToCart}>
         <input
-          onBlur={()=>{setInputMessage(false)}}
+          onBlur={() => {
+            setInputMessage(false);
+          }}
           onChange={checkAmount}
           ref={amountRef}
           type="number"
@@ -80,8 +88,13 @@ export default function ProductPrice(props) {
         />
         <button className={styles.buyButton}>
           Добавить в корзину
-          {addedToCart && (
+          {addedToCart && clientWidth > 1300 && (
             <p className={styles.addedToCartMsg}>Добавлено в корзину</p>
+          )}
+          {addedToCart && clientWidth <= 1300 && (
+            <p className={styles.addedToCartMsg}>
+              + <img src={cartIcon.src} alt="" />
+            </p>
           )}
         </button>
         {inputMessage && (

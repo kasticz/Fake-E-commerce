@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import getImages from "../../store/getImages";
 import { cartActions } from "../../store/cartSlice";
 import Link from "next/link";
+import cartIcon from '../../assets/images/cartLogo.svg'
 import styles from "./SliderItem.module.sass";
 
 export default function SliderItem(props) {
@@ -91,10 +92,11 @@ export default function SliderItem(props) {
 
       <div className={styles.linksButtons}>
         <button onClick={addToCart} className={styles.toCart}>
-          Отправить в корзину{" "}
-          {addedToCart && (
+          Отправить в корзину
+          {addedToCart && clientWidth > 500 &&  (
             <p className={styles.addedToCartMsg}>Добавлено в корзину</p>
           )}
+          {addedToCart && clientWidth <= 500 &&(<p className={styles.addedToCartMsg}><img src={cartIcon.src} alt="" /> +1</p>) }
         </button>
         <Link
           href={{
