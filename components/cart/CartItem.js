@@ -60,58 +60,62 @@ function CartItem(props) {
   return (
     <div className={styles.item}>
       <div className={styles.main}>
-        <Link href={{ pathname: `/${item.id}` }}>
-          <a>
-            <img className={styles.itemImage} src={image} alt="" />
-          </a>
-        </Link>
-
-        <div className={styles.itemCaption}>
+        <div className={styles.smallMobileWrapper}>
           <Link href={{ pathname: `/${item.id}` }}>
             <a>
-              <p className={styles.itemTitle}>{item.title}</p>
+              <img className={styles.itemImage} src={image} alt="" />
             </a>
           </Link>
 
-          <button onClick={deleteFromCart} className={styles.delete}>
-            Удалить из корзины
-          </button>
+          <div className={styles.itemCaption}>
+            <Link href={{ pathname: `/${item.id}` }}>
+              <a>
+                <p className={styles.itemTitle}>{item.title}</p>
+              </a>
+            </Link>
+
+            <button onClick={deleteFromCart} className={styles.delete}>
+              Удалить из корзины
+            </button>
+          </div>
         </div>
         <ItemActions id={item.id} amount={item.amount} />
         <div className={styles.price}>{price} ₽</div>
       </div>
       <form className={styles.extraWarrantry}>
-        <span>Дополнительная гарантия:</span>
-        <div className={styles.warrantryOption}>
-          <input
-            defaultChecked={!item.warrantryStatus}
-            ref={noWarrantryRef}
-            name="warrantry"
-            type="radio"
-          />
-          <span onClick={checkNoWr} className={styles.outer}>
-            <span className={styles.inner}></span>
-          </span>
-          <label>Без доп. гарантии</label>
-        </div>
-        <div className={styles.warrantryOption}>
-          <input
-            defaultChecked={item.warrantryStatus}
-            ref={twelveWarrantryRef}
-            name="warrantry"
-            type="radio"
-          />
-          <span onClick={checkTwelveWr} className={styles.outer}>
-            <span className={styles.inner}></span>
-          </span>
-          <label>+12 мес.</label>
-          <span className={styles.warrantryPrice}>
-            (
-            {warrantry.length > 3
-              ? `${warrantry.slice(0, -3)} ${warrantry.slice(-3)}`
-              : warrantry}
-            ₽)
-          </span>
+        <span className={styles.warrantryTitle}>Дополнительная гарантия:</span>
+        <div className={styles.mobileWrapper}>
+          <div className={styles.warrantryOption}>
+            <input
+              defaultChecked={!item.warrantryStatus}
+              ref={noWarrantryRef}
+              name="warrantry"
+              type="radio"
+            />
+            <span onClick={checkNoWr} className={styles.outer}>
+              <span className={styles.inner}></span>
+            </span>
+            <label>Без доп. гарантии</label>
+          </div>
+          <div className={styles.warrantryOption}>
+            <input
+              defaultChecked={item.warrantryStatus}
+              ref={twelveWarrantryRef}
+              name="warrantry"
+              type="radio"
+            />
+            <span onClick={checkTwelveWr} className={styles.outer}>
+              <span className={styles.inner}></span>
+            </span>
+            <label>+12 мес.</label>
+            <span className={styles.warrantryPrice}>
+              (
+              {warrantry.length > 3
+                ? `${warrantry.slice(0, -3)} ${warrantry.slice(-3)}`
+                : warrantry}
+              ₽)
+            </span>
+          </div>
         </div>
       </form>
     </div>

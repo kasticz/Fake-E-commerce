@@ -50,3 +50,49 @@
     @include card
     color: $fourthColor
     background-color: rgb(219,214,217,0.5)
+@media  ( max-width: 770px  )
+    .count
+        flex-direction: column
+        width: auto
+        height: auto           
+        button
+            height: 20px
+            width: 30px
+        input
+            margin: 0.5rem 0
+            font-size: 1.5rem
+    .inputMessage
+        height: 40px
+        padding: 0.5rem
+        bottom: -50px
+@media  ( max-width: 580px )
+    .inputMessage
+        bottom: -50px
+        left: -100px
+@media  ( max-width: 420px )
+    .count
+        flex-direction: row
+        margin-right: 1rem
+        width: auto
+        input
+            margin: 0 0.5rem
+        button
+            height: 35px
+            width: 35px
+    .inputMessage
+        bottom: -50px
+        left: -40px
+        width: 200px
+        transform: none
+        background-color: rgb(219,214,217)
+        z-index: 200
+@media  ( max-width: 360px )
+    .count
+        flex-direction: column
+        margin: 1.5rem 0 0 0
+        input
+            margin: 1rem 0
+    .inputMessage
+        left: -150px
+        background-color: rgb(219,214,217)
+        z-index: 200

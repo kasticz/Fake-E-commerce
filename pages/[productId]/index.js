@@ -23,21 +23,22 @@ export default function ProductIds(props) {
 }
 
 export async function getStaticPaths(context) {
-  const client = await MongoClient.connect(
-    `mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`
-  );
-  const db = client.db();
+  const ids = [1,2,3,4,5,21,22,23,24,25,41,42,43,44,45,61,62,63,64,65]
+  // const client = await MongoClient.connect(
+  //   `mongodb+srv://kastic:${pass}@cluster0.wtiqv.mongodb.net/?retryWrites=true&w=majority`
+  // );
+  // const db = client.db();
 
-  const products = await db
-    .collection("mouses")
-    .find({ id: { $lt: 6 } }, { projection: { _id: 0 } })
-    .toArray();
+  // const products = await db
+  //   .collection("mouses")
+  //   .find({ id: { $lt: 6 } }, { projection: { _id: 0 } })
+  //   .toArray();
 
-  client.close();
+  // client.close();
 
   return {
-    paths: products.map((item) => {
-      return { params: { productId: `${item.id}` } };
+    paths: ids.map((item) => {
+      return { params: { productId: String(item) } };
     }),
     fallback: "blocking",
   };

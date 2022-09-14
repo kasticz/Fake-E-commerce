@@ -16,6 +16,7 @@
     
 .itemImage
     cursor: pointer
+    max-width: 250px
     max-height: 200px
 .price
     height: 100%
@@ -116,4 +117,105 @@
     font-size: 1.7rem
     color: gray
     margin-left: 0.5rem
+.mobileWrapper
+    @include flexCenter
+.smallMobileWrapper
+    @include flexCenter
+    
+    
+@media  ( max-width: 1522px  )
+    .itemCaption
+        width: 40%
+        .itemTitle
+            text-align: center
+    .warrantryTitle
+        width: auto
+        max-width: 25%
+    .smallMobileWrapper
+        width: 70%
+        @include flexCenter
+        justify-content: space-around
 
+@media  ( max-width: 1100px  )
+    .item
+        position: relative
+    .itemCaption
+        .itemTitle
+            font-size: 1rem
+    .itemImage
+        max-width: 150px
+    .price
+        position: absolute
+        top: 5px
+        right: 15px
+        height: auto
+        width: auto
+    .extraWarrantry
+        .warrantryTitle,label,span
+            font-size: 1rem
+    .delete
+        margin-top: 1rem
+    .itemTitle
+        margin: 0
+@media  ( max-width: 770px  )
+    .extraWarrantry
+        flex-direction: column
+        width: 100%
+        .warrantryTitle
+            max-width: none
+            width: 100%
+            text-align: center
+            margin-bottom: 1rem
+        .mobileWrapper
+            .outer
+                height: 15px
+                width: 15px
+            .inner
+                height: 7px
+                width: 7px
+            .inner,.outer
+                box-shadow: none
+        .warrantryOption
+            &:nth-child(1)
+                margin-left: 0
+    .itemImage
+        max-width: 130px
+    .price
+        font-size: 1.5rem
+        top: 10px
+        margin: 0
+    .itemCaption
+        width: auto
+        margin: 0 0.5rem
+@media  ( max-width: 580px )
+    .item
+        margin-top: 2rem
+        width: 100%
+    .itemImage
+        max-width: 120px
+@media  ( max-width: 420px )
+    .smallMobileWrapper
+        flex-direction: column
+        width: auto
+@media  ( max-width: 360px )
+    .main
+        height: auto
+    .smallMobileWrapper
+        width: 65%
+        height: auto
+    .itemImage
+        max-width: 160px
+
+@media  ( max-width: 340px )
+    .warrantryOption
+        .outer
+            margin-right: 0.5rem
+        .warrantryOption
+            margin-left: 0.5rem 
+        label,span
+            font-size: 0.9rem
+                
+
+                
+
+        

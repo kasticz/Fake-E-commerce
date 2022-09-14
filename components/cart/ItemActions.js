@@ -42,6 +42,12 @@ export default function ItemActions(props) {
 
   function onUiLoseFocus() {
     setInputMessage(false);
+    if(+amountInput.current.value === 0){
+      dispatch(
+        cartActions.deleteFromCart(props.id)
+      );
+      return
+    }
     dispatch(
       cartActions.setProductAmount({
         id: props.id,

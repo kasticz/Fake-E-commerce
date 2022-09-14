@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
+    "https": "^1.0.0",
     "mongodb": "^4.9.0",
+    "ndjson": "^2.0.0",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",

@@ -6,7 +6,7 @@ export default function ExpandableFilter(props) {
   const [priceExpanded, setPriceExpanded] = useState(false);
   const clientWidth = useSelector(state=> state.UI.dimensions.clientWidth)
 
-  const inputHeight = clientWidth > 1200 ? 48 : clientWidth > 767 ? 38 : clientWidth > 570 ? 58 : 46
+  const inputHeight = clientWidth > 1200 ? 48 : clientWidth > 770 ? 38 : clientWidth > 570 ? 58 : 46
 
   const expandedHeight = 76 + props.inputs * inputHeight
   function priceExpand(e) {
