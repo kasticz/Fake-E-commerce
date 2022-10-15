@@ -6,9 +6,8 @@ import { Provider } from "react-redux";
 import store from "../store/store";
 import {CookiesProvider} from 'react-cookie'
 import Footer from '../components/Footer'
-import { useDispatch } from "react-redux";
-import { UIActions } from "../store/UISlice";
 import Burger from "../components/UI/mobile/Burger";
+import Head from "next/head";
 
 
 
@@ -20,6 +19,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <CookiesProvider>
     <Provider store={store}>
+    <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Интернет-магазин игровых товаров</title>
+      </Head>
       <Nav/>
       <SearchPanel/>
         <Component {...pageProps} />

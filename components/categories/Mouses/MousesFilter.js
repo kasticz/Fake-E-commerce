@@ -11,7 +11,7 @@ import styles from "./MousesFilter.module.sass";
 
 export default function FilterPanel(props) {
   const clientWidth = useSelector(state=>state.UI.dimensions.clientWidth)
-  console.log(!props.mobileStatus || clientWidth > 770)
+
   
   const productType = 'mouses'
   const router = useRouter();

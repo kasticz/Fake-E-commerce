@@ -23,7 +23,6 @@ export default function CartComp(props) {
     async function getRandomItem() {
       const response = await fetch("./api/getRandomItem");
       const item = await response.json();
-      console.log(item)
       setSuggestedItem(item);
     }
     if (cartLength === 0) {
