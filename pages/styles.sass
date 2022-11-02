@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap')
-
+@import './_variables'
 
 
 
@@ -43,6 +43,33 @@ a
 label
     cursor: inherit
 
+#__next
+    position: relative
+
+.cookiesWrapper
+    position: fixed
+    bottom: 10px
+    left: 50%
+    transform: translateX(-50%)
+    padding: 10px 20px
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 1000
+    background-color: #fff
+    border-radius: 8px
+    font-size: 22px
+    p
+        margin-right: 30px
+.cookiesButton
+    width: 150px
+    height: 50px
+    background-color: $fourthColor
+    border-radius: 16px
+    color: white
+    &:hover,&:active,&:focus
+        background-color: #6a6aaf      
+
 
 @media  ( max-width: 1522px )
     .container
@@ -50,11 +77,23 @@ label
     html
         font-size: 15px
 
+@media  ( max-width: 1300px )
+    .cookiesWrapper
+        width: 100%
+
 @media  ( max-width: 1200px )
     .container
         width: 100%
     html
         font-size: 14px
+@media  ( max-width: 700px  )
+    .cookiesWrapper
+        font-size: 16px
+        p
+            margin-right: 10px
+    .cookiesButton
+        height: 40px
+        width: 100px
 @media  ( max-width: 576px  )
     html
         font-size: 12px

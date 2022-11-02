@@ -4,6 +4,7 @@ import CheckBoxInput from "../../UI/CheckBoxInput";
 import ExpandableFilter from "../../UI/ExpandableFilter";
 import { useRouter } from "next/router";
 import styles from "../Mouses/MousesFilter.module.sass";
+import { useEffect } from "react";
 
 export default function KeyboardFilter(props) {
   const productType = 'keyboards'
@@ -29,6 +30,13 @@ export default function KeyboardFilter(props) {
     dispatch(filterKbs({ inputs }));
     if(props.closeMobileFilter) props.closeMobileFilter()
   }
+
+  useEffect(()=>{
+    return ()=>{
+      dispatch(kbsActions.reset());
+      dispatch(kbsInputsActions.resetInputs());
+    }
+  },[])
 
   return (
     <div className={styles.filterPanel}>

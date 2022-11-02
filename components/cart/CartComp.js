@@ -51,7 +51,7 @@ export default function CartComp(props) {
           acc +=
             item.amount *
             (item.warrantryStatus
-              ? Math.round(item.price + item.price * 0.15)
+              ? Math.round(item.price * 1.15)
               : item.price);
           return acc;
         }, 0)
@@ -82,7 +82,7 @@ export default function CartComp(props) {
                 <span className={styles.totalPrice}>
                   {totalPrice.length > 3
                     ? `${totalPrice.slice(0, -3)} ${totalPrice.slice(-3)}`
-                    : totalPrice}{" "}
+                    : totalPrice}
                   ₽
                 </span>
               </div>

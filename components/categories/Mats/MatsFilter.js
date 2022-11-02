@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CheckBoxInput from "../../UI/CheckBoxInput";
 import ExpandableFilter from "../../UI/ExpandableFilter";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styles from "../Mouses/MousesFilter.module.sass";
 
 export default function MatsFilter(props) {
@@ -33,6 +34,12 @@ export default function MatsFilter(props) {
     dispatch(filterMats({ inputs }));
     if(props.closeMobileFilter) props.closeMobileFilter()
   }
+  useEffect(()=>{
+    return ()=>{
+      dispatch(matsActions.reset());
+      dispatch(matsInputsActions.resetInputs());
+    }
+  },[])
 
   return (
     <div className={styles.filterPanel}>

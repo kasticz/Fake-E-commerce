@@ -19,7 +19,7 @@ function CartItem(props) {
 
   const prc = String(
     warrantryActive || item.warrantryStatus
-      ? Math.round(item.price + item.price * 0.15) * item.amount
+      ? Math.round(item.price * 1.15) * item.amount
       : item.price * item.amount
   );
   const warrantry = String(Math.round(item.price * 0.15));

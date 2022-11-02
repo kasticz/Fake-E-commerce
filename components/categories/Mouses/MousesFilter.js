@@ -8,6 +8,7 @@ import CheckBoxInput from "../../UI/CheckBoxInput";
 import ExpandableFilter from "../../UI/ExpandableFilter";
 import { useRouter } from "next/router";
 import styles from "./MousesFilter.module.sass";
+import { useEffect } from "react";
 
 export default function FilterPanel(props) {
   const clientWidth = useSelector(state=>state.UI.dimensions.clientWidth)
@@ -37,6 +38,13 @@ export default function FilterPanel(props) {
     dispatch(filterMouses({ inputs }));
     if(props.closeMobileFilter) props.closeMobileFilter()
   }
+
+  useEffect(()=>{
+    return ()=>{
+    dispatch(mouseSortingActions.reset());
+    dispatch(mouseInputsActions.resetInputs());
+    }
+  },[])
 
 
   return (

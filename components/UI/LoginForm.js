@@ -79,6 +79,7 @@ export default function LoginForm(props) {
 
   async function submitForm(e) {
     e.preventDefault();
+    setLoginError("")
     let retrievedData = false;
     let errorStatus = false;
 
@@ -122,7 +123,7 @@ export default function LoginForm(props) {
         }
       }
     }
-    if (modalStatus === "login") {
+    if (modalStatus === "login") {     
       try {
         const req = await fetch(`./api/signIn`, {
           method: "POST",
